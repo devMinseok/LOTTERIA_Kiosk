@@ -1,0 +1,16 @@
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\bin\Debug\LotteKiosk.exe.config
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\bin\Debug\LotteKiosk.exe
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\bin\Debug\LotteKiosk.pdb
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\LotteKiosk.csprojAssemblyReference.cache
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\MainWindow.g.cs
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\App.g.cs
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\LotteKiosk_MarkupCompile.cache
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\LotteKiosk_MarkupCompile.lref
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\MainWindow.baml
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\LotteKiosk.g.resources
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\LotteKiosk.Properties.Resources.resources
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\LotteKiosk.csproj.GenerateResource.cache
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\LotteKiosk.csproj.CoreCompileInputs.cache
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\LotteKiosk.exe
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\LotteKiosk.pdb
+C:\Users\YONGJAE\source\repos\LotteKiosk\LotteKiosk\obj\Debug\LotteKiosk_Content.g.cs

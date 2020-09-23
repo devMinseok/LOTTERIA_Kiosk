@@ -3,10 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:control_home="clr-namespace:LOTTERIA_Kiosk.Controls.Home"
         xmlns:local="clr-namespace:LOTTERIA_Kiosk"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="1080" Width="1920">
+    <control_home:HomeContorl x:Name="CtrlHome" Visibility="Visible" Loaded="CtrlHome_Loaded" />
 </Window>

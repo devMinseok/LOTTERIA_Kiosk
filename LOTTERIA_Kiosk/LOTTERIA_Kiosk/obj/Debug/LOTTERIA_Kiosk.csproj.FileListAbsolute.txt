@@ -1,0 +1,7 @@
+C:\Users\qbq50\Documents\Github\LOTTERIA_Kiosk\LOTTERIA_Kiosk\LOTTERIA_Kiosk\obj\Debug\LOTTERIA_Kiosk.csprojAssemblyReference.cache
+C:\Users\qbq50\Documents\Github\LOTTERIA_Kiosk\LOTTERIA_Kiosk\LOTTERIA_Kiosk\obj\Debug\UserControl\View1.g.cs
+C:\Users\qbq50\Documents\Github\LOTTERIA_Kiosk\LOTTERIA_Kiosk\LOTTERIA_Kiosk\obj\Debug\UserControl\View2.g.cs
+C:\Users\qbq50\Documents\Github\LOTTERIA_Kiosk\LOTTERIA_Kiosk\LOTTERIA_Kiosk\obj\Debug\Views\MainWindow.g.cs
+C:\Users\qbq50\Documents\Github\LOTTERIA_Kiosk\LOTTERIA_Kiosk\LOTTERIA_Kiosk\obj\Debug\App.g.cs
+C:\Users\qbq50\Documents\Github\LOTTERIA_Kiosk\LOTTERIA_Kiosk\LOTTERIA_Kiosk\obj\Debug\LOTTERIA_Kiosk_MarkupCompile.cache
+C:\Users\qbq50\Documents\Github\LOTTERIA_Kiosk\LOTTERIA_Kiosk\LOTTERIA_Kiosk\obj\Debug\LOTTERIA_Kiosk_MarkupCompile.lref

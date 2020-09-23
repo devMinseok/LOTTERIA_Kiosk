@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LOTTERIA_Kiosk.ViewModels
+namespace LOTTERIA_Kiosk.Core.Home
 {
-    class MainViewModel
+    public class Class1
     {
     }
 }

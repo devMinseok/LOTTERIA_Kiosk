@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\qbq50\Documents\Github\LOTTERIA_Kiosk\LOTTERIA_Kiosk\LOTTERIA_Kiosk\App.xaml
-11892971807
+2728043981
 
-71572288905
+91430071646
 13-1505183044
-Views\MainWindow.xaml;
+Controls\Home\HomeContorl.xaml;Views\MainWindow.xaml;
 
-False
+True
 

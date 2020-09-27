@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LOTTERIA_Kiosk.Controls.Home
+namespace LOTTERIA_Kiosk.Views.Order
 {
     /// <summary>
-    /// HomeContorl.xaml에 대한 상호 작용 논리
+    /// Order.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class HomeContorl : UserControl
+    public partial class Order : Page
     {
-        public HomeContorl()
+        public Order()
         {
             InitializeComponent();
         }

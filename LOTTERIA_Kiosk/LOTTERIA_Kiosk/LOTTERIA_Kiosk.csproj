@@ -55,11 +55,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\Home\HomeContorl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MainWindow.xaml">
+    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\CardPayment\CardPayment.xaml.cs">
+      <DependentUpon>CardPayment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CashPayment\CashPayment.xaml.cs">
+      <DependentUpon>CashPayment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manager\Manager.xaml.cs">
+      <DependentUpon>Manager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MealPlaceSelect\MealPlaceSelect.xaml.cs">
+      <DependentUpon>MealPlaceSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order\Order.xaml.cs">
+      <DependentUpon>Order.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PaymentCompleted\PaymentCompleted.xaml.cs">
+      <DependentUpon>PaymentCompleted.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PaymentSelect\PaymentSelect.xaml.cs">
+      <DependentUpon>PaymentSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SeatSelect\SeatSelect.xaml.cs">
+      <DependentUpon>SeatSelect.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -67,15 +92,47 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\Home\HomeContorl.xaml.cs">
-      <DependentUpon>HomeContorl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RelayCommand.cs" />
     <Compile Include="ViewModelBase.cs" />
-    <Compile Include="Views\MainWindow.xaml.cs">
+    <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CardPayment\CardPayment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CashPayment\CashPayment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Home\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manager\Manager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MealPlaceSelect\MealPlaceSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Order\Order.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PaymentCompleted\PaymentCompleted.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PaymentSelect\PaymentSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SeatSelect\SeatSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -103,6 +160,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Assets\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

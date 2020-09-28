@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LOTTERIA_Kiosk"
         mc:Ignorable="d"
+        WindowState="Maximized"
         Title="MainWindow" Height="650" Width="800">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.05*"/>
-            <RowDefinition Height="0.90*"/>
-            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.91*"/>
+            <RowDefinition Height="0.04*"/>
         </Grid.RowDefinitions>
         
         <Grid Grid.Row="0" Background="LightGray">
@@ -30,16 +31,47 @@
         </Grid>
         
         <Grid Grid.Row="2">
-            <StackPanel Orientation="Horizontal">
-                <Button Background="Red" Content="Home" Width="88" Click="buttonClick"/> <!-- 홈 화면 -->
-                <Button Background="Orange" Content="Order" Width="88" Click="buttonClick"/> <!-- 주문 화면 -->
-                <Button Background="Yellow" Content="MealPlaceSelect" Width="88" Click="buttonClick"/> <!-- 식사 장소 선택 화면 -->
-                <Button Background="Blue" Content="SeatSelect" Width="88" Click="buttonClick"/> <!-- 좌석 선택 화면 -->
-                <Button Background="Green" Content="PaymentSelect" Width="88" Click="buttonClick"/> <!-- 결제 수단 화면 -->
-                <Button Background="DarkBlue" Content="CashPayment" Width="88" Click="buttonClick"/> <!-- 현금 결제 화면 -->
-                <Button Background="Violet" Content="CardPayment" Width="88" Click="buttonClick"/> <!-- 카드 결제 화면 -->
-                <Button Background="Gold" Content="PaymentCompleted" Width="88" Click="buttonClick"/> <!-- 결제 완료 화면 -->
-                <Button Background="Silver" Content="Manager" Width="88" Click="buttonClick"/> <!-- 관리자 화면-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="5"/>
+                        <Setter Property="Width" Value="120"/>
+                    </Style>
+                </StackPanel.Resources>
+
+                <Grid>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Background="Red" Content="Home" Click="buttonClick" Grid.Column="0"/>
+                    <!-- 홈 화면 -->
+                    <Button Background="Orange" Content="Order"  Click="buttonClick" Grid.Column="1"/>
+                    <!-- 주문 화면 -->
+                    <Button Background="Yellow" Content="MealPlaceSelect" Click="buttonClick" Grid.Column="2"/>
+                    <!-- 식사 장소 선택 화면 -->
+                    <Button Background="Blue" Content="SeatSelect" Click="buttonClick" Grid.Column="3"/>
+                    <!-- 좌석 선택 화면 -->
+                    <Button Background="Green" Content="PaymentSelect"  Click="buttonClick" Grid.Column="4"/>
+                    <!-- 결제 수단 화면 -->
+                    <Button Background="DarkBlue" Content="CashPayment" Click="buttonClick" Grid.Column="5"/>
+                    <!-- 현금 결제 화면 -->
+                    <Button Background="Violet" Content="CardPayment"  Click="buttonClick" Grid.Column="6"/>
+                    <!-- 카드 결제 화면 -->
+                    <Button Background="Gold" Content="PaymentCompleted"  Click="buttonClick" Grid.Column="7"/>
+                    <!-- 결제 완료 화면 -->
+                    <Button Background="Silver" Content="Manager" Click="buttonClick" Grid.Column="8"/>
+                    <!-- 관리자 화면-->
+                </Grid>
+                
             </StackPanel>
         </Grid>
     </Grid>

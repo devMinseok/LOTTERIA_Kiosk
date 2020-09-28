@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\qbq50\Documents\Github\LOTTERIA_Kiosk\LOTTERIA_Kiosk\LOTTERIA_Kiosk\obj\Debug\
+C:\Users\qbq50\Documents\Github\2020_LOTTERIA_Kiosk\LOTTERIA_Kiosk\LOTTERIA_Kiosk\obj\Debug\
 LOTTERIA_Kiosk
 none
 false
 DEBUG;TRACE
-C:\Users\qbq50\Documents\Github\LOTTERIA_Kiosk\LOTTERIA_Kiosk\LOTTERIA_Kiosk\App.xaml
+C:\Users\qbq50\Documents\Github\2020_LOTTERIA_Kiosk\LOTTERIA_Kiosk\LOTTERIA_Kiosk\App.xaml
 10-226602249
 
-17-146134776
+27-1701585350
 13-1505183044
 MainWindow.xaml;Views\CardPayment\CardPayment.xaml;Views\CashPayment\CashPayment.xaml;Views\Home\Home.xaml;Views\Manager\Manager.xaml;Views\MealPlaceSelect\MealPlaceSelect.xaml;Views\Order\Order.xaml;Views\PaymentCompleted\PaymentCompleted.xaml;Views\PaymentSelect\PaymentSelect.xaml;Views\SeatSelect\SeatSelect.xaml;
 

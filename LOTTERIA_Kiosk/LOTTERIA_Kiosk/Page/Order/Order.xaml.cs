@@ -23,6 +23,8 @@ namespace LOTTERIA_Kiosk.Views.Order
         public Order()
         {
             InitializeComponent();
+
+            this.DataContext = new ViewModels.Order.OrderViewModel();
         }
     }
 }

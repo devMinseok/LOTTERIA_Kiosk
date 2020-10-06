@@ -47,8 +47,9 @@
                                 <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
-                        
-                        <ListBoxItem Content="햄버거" Style="{StaticResource CategoryStyle}"/>
+
+                        <ListBoxItem Content="햄버거" Style="{StaticResource CategoryStyle}"
+                                     Selected="{Binding }}"/>
                         <ListBoxItem Content="음료수" Style="{StaticResource CategoryStyle}"/>
                         <ListBoxItem Content="사이드 메뉴" Style="{StaticResource CategoryStyle}"/>
                         <ListBoxItem Content="세트 메뉴" Style="{StaticResource CategoryStyle}"/>
@@ -59,6 +60,28 @@
 
             <!-- 메뉴 리스트 -->
             <Grid Grid.Row="1">
+                <ListView x:Name="lvFood" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      SelectionMode="Single"
+                      MouseLeftButtonUp="LvFood_MouseLeftButtonUp">
+
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Width="400" Height="300">
+                                <Image Source="{Binding ImagePath}"></Image>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                    <TextBlock Text="{Binding Price}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
             </Grid>
         </Grid>

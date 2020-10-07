@@ -13,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LOTTERIA_Kiosk.Views.Order
+namespace LOTTERIA_Kiosk.View
 {
     /// <summary>
-    /// Order.xaml에 대한 상호 작용 논리
+    /// CardPayment.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class Order : Page
+    public partial class CardPayment : Page
     {
-        public Order()
+        public CardPayment()
         {
             InitializeComponent();
-
-            this.DataContext = new ViewModels.Order.OrderViewModel();
         }
     }
 }

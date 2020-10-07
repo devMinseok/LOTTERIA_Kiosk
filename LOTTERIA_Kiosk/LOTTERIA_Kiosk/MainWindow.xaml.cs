@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace LOTTERIA_Kiosk
 {
@@ -24,49 +26,81 @@ namespace LOTTERIA_Kiosk
         {
             InitializeComponent();
 
-            this.DataContext = new ViewModels.MainWindowViewModel();
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            SplashScreen splashScreen = new SplashScreen("Assets/logo.png");
+            splashScreen.Show(true);
+            Thread.Sleep(1000);
+            SetTimer();
+
+            splashScreen.Show(false);
+        }
+
+        private void Timer_tick(object sender, EventArgs e)
+        {
+            currentTimeTB.Text = DateTime.Now.ToString();
+        }
+
+        // 시간 표시 함수
+        private void SetTimer()
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += Timer_tick;
+            timer.Start();
         }
 
 
-        private void buttonClick(object sender, RoutedEventArgs e)
+
+
+
+
+
+
+
+
+        private void DevButtonClick(object sender, RoutedEventArgs e)
         {
             Button buttonSender = sender as Button;
 
             switch (buttonSender.Content)
             {
                 case "Home":
-                    frame_content.Source = new Uri("/Views/Home/Home.xaml", UriKind.Relative);
+                    frame_content.Source = new Uri("/View/Home.xaml", UriKind.Relative);
                     break;
                 case "Order":
-                    frame_content.Source = new Uri("/Views/Order/Order.xaml", UriKind.Relative);
+                    frame_content.Source = new Uri("/View/Order.xaml", UriKind.Relative);
                     break;
 
                 case "MealPlaceSelect":
-                    frame_content.Source = new Uri("/Views/MealPlaceSelect/MealPlaceSelect.xaml", UriKind.Relative);
+                    frame_content.Source = new Uri("/View/MealPlaceSelect.xaml", UriKind.Relative);
                     break;
 
                 case "SeatSelect":
-                    frame_content.Source = new Uri("/Views/SeatSelect/SeatSelect.xaml", UriKind.Relative);
+                    frame_content.Source = new Uri("/View/SeatSelect.xaml", UriKind.Relative);
                     break;
 
                 case "PaymentSelect":
-                    frame_content.Source = new Uri("/Views/PaymentSelect/PaymentSelect.xaml", UriKind.Relative);
+                    frame_content.Source = new Uri("/View/PaymentSelect.xaml", UriKind.Relative);
                     break;
 
                 case "CashPayment":
-                    frame_content.Source = new Uri("/Views/CashPayment/CashPayment.xaml", UriKind.Relative);
+                    frame_content.Source = new Uri("/View/CashPayment.xaml", UriKind.Relative);
                     break;
 
                 case "CardPayment":
-                    frame_content.Source = new Uri("/Views/CardPayment/CardPayment.xaml", UriKind.Relative);
+                    frame_content.Source = new Uri("/View/CardPayment.xaml", UriKind.Relative);
                     break;
 
                 case "PaymentCompleted":
-                    frame_content.Source = new Uri("/Views/PaymentCompleted/PaymentCompleted.xaml", UriKind.Relative);
+                    frame_content.Source = new Uri("/View/PaymentCompleted.xaml", UriKind.Relative);
                     break;
 
                 case "Manager":
-                    frame_content.Source = new Uri("/Views/Manager/Manager.xaml", UriKind.Relative);
+                    frame_content.Source = new Uri("/View/Manager.xaml", UriKind.Relative);
                     break;
 
                 default:
@@ -74,8 +108,6 @@ namespace LOTTERIA_Kiosk
             }
 
         }
-
-
 
     }
 }

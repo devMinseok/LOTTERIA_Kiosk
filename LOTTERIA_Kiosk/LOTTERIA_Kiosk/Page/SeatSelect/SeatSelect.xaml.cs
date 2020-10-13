@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LOTTERIA_Kiosk.View
+namespace LOTTERIA_Kiosk.Views.SeatSelect
 {
     /// <summary>
     /// SeatSelect.xaml에 대한 상호 작용 논리

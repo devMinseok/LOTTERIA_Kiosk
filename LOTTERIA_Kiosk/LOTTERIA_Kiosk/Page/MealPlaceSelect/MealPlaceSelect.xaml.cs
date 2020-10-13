@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LOTTERIA_Kiosk.View
+namespace LOTTERIA_Kiosk.Views.MealPlaceSelect
 {
     /// <summary>
-    /// CashPayment.xaml에 대한 상호 작용 논리
+    /// MealPlaceSelect.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class CashPayment : Page
+    public partial class MealPlaceSelect : Page
     {
-        public CashPayment()
+        public MealPlaceSelect()
         {
             InitializeComponent();
         }

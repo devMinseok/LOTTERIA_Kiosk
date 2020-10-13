@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LOTTERIA_Kiosk"
         mc:Ignorable="d"
-        WindowStyle="None"
         WindowState="Maximized"
         Title="MainWindow" Height="650" Width="800">
 
@@ -17,15 +16,17 @@
         </Grid.RowDefinitions>
         
         <Grid Grid.Row="0" Background="LightGray">
-            <TextBlock x:Name="currentTimeTB" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
-            <Button HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0">
+            <TextBlock Text="{Binding Time}" 
+                       HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
+            <Button Command="{Binding HomeCommand}"
+                    HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0">
                 <Image Source="/Assets/home.png"/> 
             </Button>
         </Grid>
         
         <Grid Grid.Row="1">
             <Frame Name="frame_content"
-                   Source="/View/Home.xaml" 
+                   Source="/Views/Home/Home.xaml" 
                    NavigationUIVisibility="Hidden"/>
         </Grid>
         
@@ -51,23 +52,23 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Background="Red" Content="Home" Click="DevButtonClick" Grid.Column="0"/>
+                    <Button Background="Red" Content="Home" Click="buttonClick" Grid.Column="0"/>
                     <!-- 홈 화면 -->
-                    <Button Background="Orange" Content="Order"  Click="DevButtonClick" Grid.Column="1"/>
+                    <Button Background="Orange" Content="Order"  Click="buttonClick" Grid.Column="1"/>
                     <!-- 주문 화면 -->
-                    <Button Background="Yellow" Content="MealPlaceSelect" Click="DevButtonClick" Grid.Column="2"/>
+                    <Button Background="Yellow" Content="MealPlaceSelect" Click="buttonClick" Grid.Column="2"/>
                     <!-- 식사 장소 선택 화면 -->
-                    <Button Background="Blue" Content="SeatSelect" Click="DevButtonClick" Grid.Column="3"/>
+                    <Button Background="Blue" Content="SeatSelect" Click="buttonClick" Grid.Column="3"/>
                     <!-- 좌석 선택 화면 -->
-                    <Button Background="Green" Content="PaymentSelect"  Click="DevButtonClick" Grid.Column="4"/>
+                    <Button Background="Green" Content="PaymentSelect"  Click="buttonClick" Grid.Column="4"/>
                     <!-- 결제 수단 화면 -->
-                    <Button Background="DarkBlue" Content="CashPayment" Click="DevButtonClick" Grid.Column="5"/>
+                    <Button Background="DarkBlue" Content="CashPayment" Click="buttonClick" Grid.Column="5"/>
                     <!-- 현금 결제 화면 -->
-                    <Button Background="Violet" Content="CardPayment"  Click="DevButtonClick" Grid.Column="6"/>
+                    <Button Background="Violet" Content="CardPayment"  Click="buttonClick" Grid.Column="6"/>
                     <!-- 카드 결제 화면 -->
-                    <Button Background="Gold" Content="PaymentCompleted"  Click="DevButtonClick" Grid.Column="7"/>
+                    <Button Background="Gold" Content="PaymentCompleted"  Click="buttonClick" Grid.Column="7"/>
                     <!-- 결제 완료 화면 -->
-                    <Button Background="Silver" Content="Manager" Click="DevButtonClick" Grid.Column="8"/>
+                    <Button Background="Silver" Content="Manager" Click="buttonClick" Grid.Column="8"/>
                     <!-- 관리자 화면-->
                 </Grid>
                 

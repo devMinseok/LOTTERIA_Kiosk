@@ -13,25 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LOTTERIA_Kiosk.View
+namespace LOTTERIA_Kiosk.Views.PaymentCompleted
 {
     /// <summary>
-    /// Home.xaml에 대한 상호 작용 논리
+    /// PaymentCompleted.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class Home : Page
+    public partial class PaymentCompleted : Page
     {
-        public Home()
+        public PaymentCompleted()
         {
             InitializeComponent();
         }
-
-        private void MoveToOrder(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/View/Order.xaml", UriKind.Relative));
-        }
-
-
-
-
     }
 }

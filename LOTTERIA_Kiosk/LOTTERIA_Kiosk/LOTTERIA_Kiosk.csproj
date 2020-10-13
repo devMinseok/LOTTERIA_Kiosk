@@ -55,35 +55,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Common\MenuCategory.cs" />
-    <Compile Include="DataSource\MenuDataSource.cs" />
+    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Model\Dummy.cs" />
-    <Compile Include="Network\Network.cs" />
-    <Compile Include="View\CardPayment.xaml.cs">
+    <Compile Include="Page\CardPayment\CardPayment.xaml.cs">
       <DependentUpon>CardPayment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CashPayment.xaml.cs">
+    <Compile Include="Page\CashPayment\CashPayment.xaml.cs">
       <DependentUpon>CashPayment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Home.xaml.cs">
+    <Compile Include="Page\Home\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Manager.xaml.cs">
+    <Compile Include="Page\Manager\Manager.xaml.cs">
       <DependentUpon>Manager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MealPlaceSelect.xaml.cs">
+    <Compile Include="Page\MealPlaceSelect\MealPlaceSelect.xaml.cs">
       <DependentUpon>MealPlaceSelect.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Order.xaml.cs">
+    <Compile Include="Page\Order\Order.xaml.cs">
       <DependentUpon>Order.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PaymentCompleted.xaml.cs">
+    <Compile Include="Page\PaymentCompleted\PaymentCompleted.xaml.cs">
       <DependentUpon>PaymentCompleted.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PaymentSelect.xaml.cs">
+    <Compile Include="Page\PaymentSelect\PaymentSelect.xaml.cs">
       <DependentUpon>PaymentSelect.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SeatSelect.xaml.cs">
+    <Compile Include="Page\SeatSelect\SeatSelect.xaml.cs">
       <DependentUpon>SeatSelect.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -94,43 +93,44 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModelBase.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\CardPayment.xaml">
+    <Page Include="Page\CardPayment\CardPayment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CashPayment.xaml">
+    <Page Include="Page\CashPayment\CashPayment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Home.xaml">
+    <Page Include="Page\Home\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Manager.xaml">
+    <Page Include="Page\Manager\Manager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MealPlaceSelect.xaml">
+    <Page Include="Page\MealPlaceSelect\MealPlaceSelect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Order.xaml">
+    <Page Include="Page\Order\Order.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PaymentCompleted.xaml">
+    <Page Include="Page\PaymentCompleted\PaymentCompleted.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PaymentSelect.xaml">
+    <Page Include="Page\PaymentSelect\PaymentSelect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SeatSelect.xaml">
+    <Page Include="Page\SeatSelect\SeatSelect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,12 +161,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Assets\home.png" />
+    <Folder Include="Common\" />
+    <Folder Include="DataSource\" />
+    <Folder Include="Network\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\logo.png" />
+    <Resource Include="Assets\home.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

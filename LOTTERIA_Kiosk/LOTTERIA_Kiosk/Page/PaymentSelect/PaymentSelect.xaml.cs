@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LOTTERIA_Kiosk.View
+namespace LOTTERIA_Kiosk.Views.PaymentSelect
 {
     /// <summary>
-    /// PaymentCompleted.xaml에 대한 상호 작용 논리
+    /// PaymentSelect.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class PaymentCompleted : Page
+    public partial class PaymentSelect : Page
     {
-        public PaymentCompleted()
+        public PaymentSelect()
         {
             InitializeComponent();
         }

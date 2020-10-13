@@ -8,9 +8,9 @@ namespace LOTTERIA_Kiosk.Common
 {
     public enum MenuCategory
     {
-        Hamburger,
-        Drink,
-        SideMenu,
-        SetMenu
+        Hamburger, // 햄버거
+        Drink, // 음료수
+        SideMenu, // 디저트
+        SetMenu // 치킨
     }
 }

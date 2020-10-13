@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LOTTERIA_Kiosk.Models
+namespace LOTTERIA_Kiosk.Model
 {
-    class Dummy
+    class Food
     {
     }
 }

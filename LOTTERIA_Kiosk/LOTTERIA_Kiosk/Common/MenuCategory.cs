@@ -10,7 +10,7 @@ namespace LOTTERIA_Kiosk.Common
     {
         Hamburger, // 햄버거
         Drink, // 음료수
-        SideMenu, // 사이드 메뉴
-        SetMenu // 세트 메뉴
+        SideMenu, // 디저트
+        SetMenu // 치킨
     }
 }

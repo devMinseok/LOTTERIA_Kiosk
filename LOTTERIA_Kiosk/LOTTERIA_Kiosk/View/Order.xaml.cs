@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LOTTERIA_Kiosk.Views.CashPayment
+namespace LOTTERIA_Kiosk.View
 {
     /// <summary>
-    /// CashPayment.xaml에 대한 상호 작용 논리
+    /// Order.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class CashPayment : Page
+    public partial class Order : Page
     {
-        public CashPayment()
+        public Order()
         {
             InitializeComponent();
         }

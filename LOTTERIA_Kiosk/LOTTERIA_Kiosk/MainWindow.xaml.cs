@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LOTTERIA_Kiosk.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,8 @@ namespace LOTTERIA_Kiosk
             SetTimer();
 
             splashScreen.Show(false);
+
+            this.PreviewKeyDown += MainWindow_PreviewKeyDown;
         }
 
         private void Timer_tick(object sender, EventArgs e)
@@ -54,6 +57,19 @@ namespace LOTTERIA_Kiosk
         }
 
 
+        public void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.F2)
+            {
+                if(!frame_content.CanGoBack)
+                {
+                    //Test test = new Test();
+                    //test.Show();
+                    frame_content.Source = new Uri("/View/Manager.xaml", UriKind.Relative);
+                }
+            }
+        }
+
 
 
 
@@ -69,7 +85,10 @@ namespace LOTTERIA_Kiosk
             switch (buttonSender.Content)
             {
                 case "Home":
-                    frame_content.Source = new Uri("/View/Home.xaml", UriKind.Relative);
+                    while(frame_content.CanGoBack == true)
+                    {
+                        frame_content.GoBack();
+                    }
                     break;
                 case "Order":
                     frame_content.Source = new Uri("/View/Order.xaml", UriKind.Relative);

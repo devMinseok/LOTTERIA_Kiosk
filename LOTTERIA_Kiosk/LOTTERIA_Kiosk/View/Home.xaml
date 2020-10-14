@@ -8,8 +8,76 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Home">
 
-    <Grid Background="White">
-        <Button Content="주문하기" Width="60" Height="20" Click="MoveToOrder"/>
+    <Grid Background="#FFFFFF">
+
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+      
+        <Grid Grid.Row="0">
+      
+      <Grid Grid.Row="1">
+      <Button Content="주문하기" Height="50" Width="120" Foreground="White"
+              FontSize="15" Background="#C63636"/>
+    </Grid>-->
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="2*"/>
+            <RowDefinition  Height="4*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <!--테스트입니다.-->
+        <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="3">
+            <Image Source="/Assets/icon/circular.png" Opacity="0.1"/>
+
+        </Grid>
+
+
+        <Grid Grid.Column="0"  Grid.RowSpan="3" >
+            <MediaElement x:Name="startMedia" 
+                      Source="Assets/Lotteria_Movie.mp4" 
+                      LoadedBehavior="Manual"
+                      />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="0">
+
+        </Grid>
+
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Image Source="/Assets/logo.png" Stretch="Uniform" Height="80"
+                   HorizontalAlignment="Center" VerticalAlignment="Top" Margin="77,65,73,0">
+            </Image>
+
+            <TextBlock x:Name="Text" Height="90" Width="350" TextAlignment="Center"
+                     VerticalAlignment="Bottom" HorizontalAlignment="Center" TextWrapping="Wrap" >
+                <Span FontSize="17"><Span Foreground="#C63636"> <Bold>롯데리아</Bold></Span>를 방문해 주셔서 감사합니다.
+                <LineBreak/>
+                주문을 원하시면 주문하기 버튼을 눌러주세요
+                </Span>
+            </TextBlock>
+        </Grid>
+
+
+        <Grid Grid.Column="1"  Grid.Row="2">
+            <Button Content="주문하기" Height="50" Width="120" Foreground="White" Margin="0 0 0 100"  
+                    HorizontalAlignment="Center" FontSize="15" Background="#C63636"  Click="OrderBtn_Click" />
+
+            <Button Grid.Column="2"
+                Click="Manager_Click" Background="White" BorderThickness="0"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 30 0">
+                <Image Source="/Assets/icon/manager.png" Height="60" Width="50"/>
+            </Button>
+
+        </Grid>
+
     </Grid>
 
 </Page>

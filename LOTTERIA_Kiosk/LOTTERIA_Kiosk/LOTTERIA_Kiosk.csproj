@@ -164,7 +164,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\ic_cash.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Icon\home_button.png" />
   </ItemGroup>
@@ -230,6 +232,9 @@
     <Resource Include="Assets\Menu\Hamburger\폴더버거 핫치킨.jpg" />
     <Resource Include="Assets\Menu\Hamburger\한우불고기.jpg" />
     <Resource Include="Assets\Menu\Hamburger\핫크리스피버거.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ic_card.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

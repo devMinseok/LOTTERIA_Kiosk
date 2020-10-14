@@ -1,14 +1,48 @@
 ﻿<Page x:Class="LOTTERIA_Kiosk.View.CardPayment"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:LOTTERIA_Kiosk.View"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
+      d:DesignHeight="1080"
+      d:DesignWidth="1920"
       Title="CardPayment">
 
     <Grid>
-        
+        <Grid HorizontalAlignment="Center">
+            <StackPanel
+                Margin="0,100,0,0">
+                <TextBlock Text="카드 결제를 선택하였습니다."
+                           FontSize="32"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="카메라에 QR코드를 인식해 주세요."
+                           FontSize="32"
+                           HorizontalAlignment="Center" />
+
+                <TextBlock Text="회원명 : 이용재"
+                           FontSize="20"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="총 금액 : 0원"
+                           FontSize="20"
+                           HorizontalAlignment="Center" />
+
+                <Rectangle InkCanvas.Left="200"
+                           Margin="0,100,0,0"
+                           InkCanvas.Top="10"
+                           Height="250"
+                           Width="250"
+                           Fill="SkyBlue"
+                           Stroke="White"
+                           RadiusX="10"
+                           RadiusY="10" />
+                <Button Content="이전으로" 
+                        Name="btn_before"
+                        Click="btn_before_Click"
+                        Margin="0,150,0,0"
+                        Width="200"
+                        Height="80"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

@@ -24,5 +24,13 @@ namespace LOTTERIA_Kiosk.View
         {
             InitializeComponent();
         }
+
+        private void btn_before_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
+        }
     }
 }

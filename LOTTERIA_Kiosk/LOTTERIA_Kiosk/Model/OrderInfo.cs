@@ -7,18 +7,26 @@ using System.Threading.Tasks;
 
 namespace LOTTERIA_Kiosk.Model
 {
-    class OrderInfo
+    public class OrderInfo
     {
-        // 주문 번호
+        /// <summary>
+        /// 주문 번호
+        /// </summary>
         public int OrderNumber { get; set; } 
 
-        // 주문자 정보
+        /// <summary>
+        /// 주문자 정보
+        /// </summary>
         public User UserInfo { get; set; }
 
-        // 주문한 음식 목록
+        /// <summary>
+        /// 주문한 음식 목록
+        /// </summary>
         public List<Food> OrderedFoodList { get; set; }
 
-        // 선택한 좌석
+        /// <summary>
+        /// 선택한 좌석
+        /// </summary>
         public Seat SelectedSeat { get; set; }
     }
 }

@@ -18,8 +18,8 @@
 
         <Grid Grid.Row="0" Background="LightGray">
             <TextBlock x:Name="currentTimeTB" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
-            <Button HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0" BorderThickness="0">
-                <Image Source="/Assets/icon/home_button.png"/>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0">
+                <Image Source="/Assets/Icon/home_button.png"/>
             </Button>
         </Grid>
 
@@ -29,7 +29,7 @@
                 <ColumnDefinition Width="18*"/>
             </Grid.ColumnDefinitions>
             <Frame Name="frame_content"
-                   Source="/View/Home.xaml" 
+                   Source="/View/Home.xaml"
                    NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" Margin="0,0,-0.4,-0.4"/>
         </Grid>
 

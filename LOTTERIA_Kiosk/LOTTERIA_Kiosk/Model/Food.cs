@@ -9,19 +9,29 @@ namespace LOTTERIA_Kiosk.Model
 {
     public class Food
     {
-        // 음식명
+        /// <summary>
+        /// 음식명
+        /// </summary>
         public String Name { get; set; }
 
-        // 음식 가격
+        /// <summary>
+        /// 음식 가격
+        /// </summary>
         public int Price { get; set; }
 
-        // 음식 주문 갯수
+        /// <summary>
+        /// 음식 주문 갯수
+        /// </summary>
         public int Count { get; set; }
 
-        // 음식 이미지 경로
+        /// <summary>
+        /// 음식 이미지 경로
+        /// </summary>
         public String ImagePath { get; set; }
 
-        // 음식 카테고리
+        /// <summary>
+        /// 음식 카테고리
+        /// </summary>
         public MenuCategory Category { get; set; }
     }
 }

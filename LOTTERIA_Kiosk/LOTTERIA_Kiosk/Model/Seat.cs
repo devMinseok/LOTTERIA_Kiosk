@@ -8,16 +8,24 @@ namespace LOTTERIA_Kiosk.Model
 {
     public class Seat
     {
-        // 좌석 번호
+        /// <summary>
+        /// 좌석 번호
+        /// </summary>
         public int Number { get; set; } 
 
-        // 사용 여부
+        /// <summary>
+        /// 사용 여부
+        /// </summary>
         public bool IsUsed { get; set; }
 
-        // 결제 시간
+        /// <summary>
+        /// 결제 시간
+        /// </summary>
         public DateTime PaymentTime { get; set; }
 
-        // 메뉴 판매 기록 (관리자 메뉴용)
+        /// <summary>
+        /// 메뉴 판매 기록 (관리자 메뉴용)
+        /// </summary>
         public List<Food> FoodLog { get; set; }
     }
 }

@@ -5,10 +5,85 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LOTTERIA_Kiosk.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="PaymentSelect">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <ListView Width="750" Height="500" Name="menuList" Margin="0,0,0,250">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="메뉴" Width="500" DisplayMemberBinding="{Binding Menu}"/>
+                        <GridViewColumn Header="수량" Width="125" DisplayMemberBinding="{Binding Number}"/>
+                        <GridViewColumn Header="가격" Width="125" DisplayMemberBinding="{Binding Price}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <TextBlock Name="TotalPrice"
+                       Height="30"
+                       HorizontalAlignment="Right"
+                       Text="총 금액 : 0원"
+                       Margin="0,300,135,0"/>
+            <Button Height="50"
+                    Width="100"
+                    Content="이전"
+                    Margin="0,500,600,0"/>
+        </Grid>
+
+
+        <Grid Grid.Column="1">
+            <TextBlock
+                Text="결제 방식을 선택해주세요."
+                FontSize="32"
+                Height="50"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,750"/>
+            <StackPanel
+                HorizontalAlignment="Center"
+                Orientation="Horizontal"
+                Margin="0,0,0,50"
+                >
+                <Button
+                Name="btn_cashpay"
+                Click="btn_cashpay_Click"
+                Width="200"
+                Height="300"
+                Margin="50"
+                    >
+                    <StackPanel Orientation="Vertical">
+
+                        <TextBlock Text="현금 결제"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,50"/>
+                        <Image Source="/Assets/ic_cash.png"
+                               Width="150"
+                               Margin="0,0,0,0"/>
+
+                    </StackPanel>
+                </Button>
+                <Button
+                Name="btn_cardpay"
+                Click="btn_cardpay_Click"
+                Width="200"
+                Height="300"
+                Margin="50">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="카드 결제"
+                                   Margin="0,0,0,80"
+                                   HorizontalAlignment="Center"/>
+                        <Image Source="/Assets/ic_card.png"
+                               Width="150"
+                               Margin="0,0,0,0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Page>

@@ -24,5 +24,15 @@ namespace LOTTERIA_Kiosk.View
         {
             InitializeComponent();
         }
+
+        private void btn_cashpay_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/CashPayment.xaml", UriKind.Relative));
+        }
+
+        private void btn_cardpay_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/CardPayment.xaml", UriKind.Relative));
+        }
     }
 }

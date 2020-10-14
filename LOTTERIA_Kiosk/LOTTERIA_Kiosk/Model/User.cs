@@ -6,21 +6,31 @@ using System.Threading.Tasks;
 
 namespace LOTTERIA_Kiosk.Model
 {
-    class User
+    public class User
     {
-        // 사용자 아이디
+        /// <summary>
+        /// 사용자 아이디
+        /// </summary>
         public String Id { get; set; }
 
-        // 사용자명
+        /// <summary>
+        /// 사용자명
+        /// </summary>
         public String Name { get; set; }
 
-        // 사용자 카드번호
+        /// <summary>
+        /// 사용자 카드번호
+        /// </summary>
         public String Card { get; set; }
 
-        // 사용자 현금 영수증 카드번호
+        /// <summary>
+        /// 사용자 현금 영수증 카드번호
+        /// </summary>
         public String CashReceiptCard { get; set; }
 
-        // 여태까지 주문한 메뉴목록 (관리자 메뉴용)
+        /// <summary>
+        /// 여태까지 주문한 메뉴목록 (관리자 메뉴용)
+        /// </summary>
         public List<Food> FoodHistory { get; set; }
     }
 }

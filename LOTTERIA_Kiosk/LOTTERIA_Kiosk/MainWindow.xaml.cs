@@ -41,7 +41,7 @@ namespace LOTTERIA_Kiosk
 
         private void Timer_tick(object sender, EventArgs e)
         {
-            currentTimeTB.Text = DateTime.Now.ToString();
+            currentTimeTB.Text = DateTime.Now.ToString("F");
         }
 
         // 시간 표시 함수
@@ -52,15 +52,6 @@ namespace LOTTERIA_Kiosk
             timer.Tick += Timer_tick;
             timer.Start();
         }
-
-
-
-
-
-
-
-
-
 
         private void DevButtonClick(object sender, RoutedEventArgs e)
         {

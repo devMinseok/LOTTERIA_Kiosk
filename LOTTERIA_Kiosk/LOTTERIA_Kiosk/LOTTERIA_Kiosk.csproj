@@ -63,6 +63,7 @@
     </ApplicationDefinition>
     <Compile Include="Common\MenuCategory.cs" />
     <Compile Include="DataSource\MenuDataSource.cs" />
+    <Compile Include="DataSource\SeatDataSource.cs" />
     <Compile Include="Model\Food.cs" />
     <Compile Include="Model\OrderInfo.cs" />
     <Compile Include="Model\Seat.cs" />

@@ -13,28 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LOTTERIA_Kiosk.View
+namespace LOTTERIA_Kiosk.View.Manager
 {
     /// <summary>
-    /// CardPayment.xaml에 대한 상호 작용 논리
+    /// CategoryStats.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class CardPayment : Page
+    public partial class CategoryStats : Page
     {
-        public CardPayment()
+        public CategoryStats()
         {
             InitializeComponent();
-
-            webcam.CameraIndex = 0;
-        }
-
-        private void webcam_QrDecoded(object sender, string e) { tbRecog.Text = e; }
-
-        private void btn_before_Click(object sender, RoutedEventArgs e)
-        {
-            if (NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
         }
     }
 }

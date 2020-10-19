@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:LOTTERIA_Kiosk.View"
+      xmlns:qrcode="clr-namespace:KQRCode;assembly=KQRCode"
       mc:Ignorable="d"
       d:DesignHeight="1080"
       d:DesignWidth="1920"
@@ -21,21 +22,19 @@
                            HorizontalAlignment="Center" />
 
                 <TextBlock Text="회원명 : 이용재"
+                           Name="tbRecog"
                            FontSize="20"
                            HorizontalAlignment="Center" />
                 <TextBlock Text="총 금액 : 0원"
                            FontSize="20"
                            HorizontalAlignment="Center" />
 
-                <Rectangle InkCanvas.Left="200"
-                           Margin="0,100,0,0"
-                           InkCanvas.Top="10"
-                           Height="250"
-                           Width="250"
-                           Fill="SkyBlue"
-                           Stroke="White"
-                           RadiusX="10"
-                           RadiusY="10" />
+                <qrcode:KQRWebCam x:Name="webcam"
+                                  Width="500"
+                                  Height="400"
+                                  Margin="12"
+                                  QrDecoded="webcam_QrDecoded" />
+
                 <Button Content="이전으로" 
                         Name="btn_before"
                         Click="btn_before_Click"

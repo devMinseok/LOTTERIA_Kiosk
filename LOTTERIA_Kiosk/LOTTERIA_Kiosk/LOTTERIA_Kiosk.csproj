@@ -78,8 +78,20 @@
     <Compile Include="View\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Manager\Manager.xaml.cs">
-      <DependentUpon>Manager.xaml</DependentUpon>
+    <Compile Include="View\Manager\AllDayStats.xaml.cs">
+      <DependentUpon>AllDayStats.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\CategoryStats.xaml.cs">
+      <DependentUpon>CategoryStats.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\MenuStats.xaml.cs">
+      <DependentUpon>MenuStats.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\TodayStats.xaml.cs">
+      <DependentUpon>TodayStats.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\UserStats.xaml.cs">
+      <DependentUpon>UserStats.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MealPlaceSelect.xaml.cs">
       <DependentUpon>MealPlaceSelect.xaml</DependentUpon>
@@ -120,7 +132,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Manager\Manager.xaml">
+    <Page Include="View\Manager\AllDayStats.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\CategoryStats.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\ManagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\MenuStats.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\TodayStats.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\UserStats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,6 +275,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\ic_card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KQRCode\KQRCode.csproj">
+      <Project>{62f1b37e-4bb2-442b-99a7-36279c5c0f3f}</Project>
+      <Name>KQRCode</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

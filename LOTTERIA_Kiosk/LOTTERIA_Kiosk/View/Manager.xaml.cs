@@ -32,10 +32,10 @@ namespace LOTTERIA_Kiosk.View
            new LineSeries
            {
                Title = "Series 1",
-               Values = new ChartValues<double> { 1, 1, 2, 3 ,5 }
+               Values = new ChartValues<double> { 18500, 50000, 3600, 5100 ,32400 }
            }
        };
-            TestGrid.Children.Add(ch);
+            TestTable.Children.Add(ch);
         }
     }
 }

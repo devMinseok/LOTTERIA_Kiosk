@@ -9,6 +9,6 @@
       Title="Manager">
 
     <Grid>
-        <Grid Name="TestGrid" />
+        <Grid Name="TestTable" />
     </Grid>
 </Page>

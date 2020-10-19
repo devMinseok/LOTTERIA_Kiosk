@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LOTTERIA_Kiosk.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,22 @@ namespace LOTTERIA_Kiosk.View
         public Order()
         {
             InitializeComponent();
+
+            Loaded += Order_Loaded;
         }
+
+        private void Order_Loaded(object sender, RoutedEventArgs e)
+        {
+            App.FoodData.Load();
+            App.SeatData.Load();
+
+            lbMenus.ItemsSource = App.FoodData.foodList;
+        }
+
+        private void SetLvFoodItem(MenuCategory category)
+        {
+            lbMenus.ItemsSource = App.FoodData.foodList.FindAll(x => x.Category == category);
+        }
+
     }
 }

@@ -10,12 +10,11 @@
 
     <Page.Resources>
         <Style x:Key="CategoryStyle" TargetType="ListBoxItem">
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="BorderBrush" Value="#C63636"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0.5"/>
             <Setter Property="Background" Value="White"/>
-            <Setter Property="Foreground" Value="#C63636"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -24,7 +23,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="White">
+    <Grid Background="#F1F2F4">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.6*"/>
             <ColumnDefinition Width="0.4*"/>
@@ -33,34 +32,52 @@
         <!-- 우측 영역 -->
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.1*"/>
             </Grid.RowDefinitions>
 
             <!-- 메뉴 카테고리 -->
             <Grid Grid.Row="0">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ListBox x:Name="lbCategory" Margin="0,0,0,0" BorderBrush="Transparent"  Background="Transparent">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
 
-                    <ListBox x:Name="lbCategory">
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
+                    <ListBoxItem Content="햄버거" Style="{StaticResource CategoryStyle}"/>
+                    <ListBoxItem Content="음료수" Style="{StaticResource CategoryStyle}"/>
+                    <ListBoxItem Content="사이드 메뉴" Style="{StaticResource CategoryStyle}"/>
+                    <ListBoxItem Content="세트 메뉴" Style="{StaticResource CategoryStyle}"/>
 
-                        <ListBoxItem Content="햄버거" Style="{StaticResource CategoryStyle}"/>
-                        <ListBoxItem Content="음료수" Style="{StaticResource CategoryStyle}"/>
-                        <ListBoxItem Content="사이드 메뉴" Style="{StaticResource CategoryStyle}"/>
-                        <ListBoxItem Content="세트 메뉴" Style="{StaticResource CategoryStyle}"/>
-                    </ListBox>
-
-                </StackPanel>
+                </ListBox>
             </Grid>
 
             <!-- 메뉴 리스트 -->
             <Grid Grid.Row="1">
-                
+                <ListBox x:Name="lbMenus" Margin="60,0,60,0" FontSize="20" FontWeight="SemiBold" VerticalAlignment="Center" BorderBrush="Transparent" Background="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <!--<WrapPanel />-->
+                            <UniformGrid Columns="3" Rows="3"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
 
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Image Source="{Binding ImagePath}"/>
+                                <TextBlock Text="{Binding Name}" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{Binding Price}" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                
             </Grid>
         </Grid>
 

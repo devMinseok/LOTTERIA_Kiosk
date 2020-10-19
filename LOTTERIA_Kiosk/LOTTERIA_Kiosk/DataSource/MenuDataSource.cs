@@ -31,7 +31,7 @@ namespace LOTTERIA_Kiosk.DataSource
                 new Food() { Category = MenuCategory.Hamburger, Name = "리아미라클버거", Price = 5600, ImagePath = @"/Assets/Menu/Hamburger/리아미라클버거.jpg" },
                 new Food() { Category = MenuCategory.Hamburger, Name = "모짜렐라 인 더 버거", Price = 6000, ImagePath = @"/Assets/Menu/Hamburger/모짜렐라 인 더 버거.jpg" },
                 new Food() { Category = MenuCategory.Hamburger, Name = "밀리터리 버거", Price = 6400, ImagePath = @"/Assets/Menu/Hamburger/밀리터리 버거.jpg" },
-                new Food() { Category = MenuCategory.Hamburger, Name = "불고기 버거", Price = 3900, ImagePath = @"/Assets/Menu/Hamburger/불고기 버거.jpg" },
+                new Food() { Category = MenuCategory.Hamburger, Name = "불고기 버거", Price = 3900, ImagePath = @"/Assets/Menu/Hamburger/불고기버거.jpg" },
                 new Food() { Category = MenuCategory.Hamburger, Name = "빅불", Price = 5800, ImagePath = @"/Assets/Menu/Hamburger/빅불.jpg" },
                 new Food() { Category = MenuCategory.Hamburger, Name = "새우버거", Price = 3900, ImagePath = @"/Assets/Menu/Hamburger/새우버거.jpg" },
                 new Food() { Category = MenuCategory.Hamburger, Name = "와규에디션II", Price = 5800, ImagePath = @"/Assets/Menu/Hamburger/와규에디션II.jpg" },

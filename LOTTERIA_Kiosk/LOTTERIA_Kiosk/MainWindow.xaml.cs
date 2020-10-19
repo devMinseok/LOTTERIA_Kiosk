@@ -34,6 +34,9 @@ namespace LOTTERIA_Kiosk
             SplashScreen splashScreen = new SplashScreen("Assets/logo.png");
             splashScreen.Show(true);
             Thread.Sleep(1000);
+
+            App.SeatData.Load();
+
             SetTimer();
 
             splashScreen.Show(false);

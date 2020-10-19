@@ -91,7 +91,7 @@ namespace LOTTERIA_Kiosk
                     break;
 
                 case "Manager":
-                    frame_content.Source = new Uri("/View/Manager.xaml", UriKind.Relative);
+                    frame_content.Source = new Uri("/View/Manager/Manager.xaml", UriKind.Relative);
                     break;
 
                 default:

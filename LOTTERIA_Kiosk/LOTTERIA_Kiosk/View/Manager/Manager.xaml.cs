@@ -25,40 +25,32 @@ namespace LOTTERIA_Kiosk.View.Manager
         public ManagerPage()
         {
             InitializeComponent();
-
-            SeriesCollection = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = "버거",
-                    Values = new ChartValues<double> { 4500, 14500, 25000, 50000 }
-                }
-            };
-
-            //adding series will update and animate the chart automatically
-            SeriesCollection.Add(new ColumnSeries
-            {
-                Title = "와퍼",
-                Values = new ChartValues<double> { 1100, 56000, 42000, 12000 }
-            });
-
-            //also adding values updates and animates the chart automatically
-
-            Labels = new[] { "Maria", "Susan", "Charles", "Frida" };
-            Formatter = value => value.ToString("N");
-
-            DataContext = this;
         }
-
-      
-
-        public SeriesCollection SeriesCollection { get; set; }
-        public string[] Labels { get; set; }
-        public Func<double, string> Formatter { get; set; }
-
         private void Stats_Button_Click(object sender, RoutedEventArgs e)
         {
+            Button buttonSender = sender as Button;
+            switch (buttonSender.Name)
+            {
+                case "btn_MenuStats":
+                    frame_stats.Source = new Uri("MenuStats.xaml", UriKind.Relative);
+                    break;
 
+                case "btn_CategoryStats":
+                    frame_stats.Source = new Uri("CategoryStats.xaml", UriKind.Relative);
+                    break;
+
+                case "btn_DateStats":
+                    frame_stats.Source = new Uri("DateStats.xaml", UriKind.Relative);
+                    break;
+
+                case "btn_TodayStats":
+                    frame_stats.Source = new Uri("TodayStats.xaml", UriKind.Relative);
+                    break;
+
+                case "btn_UserStats":
+                    frame_stats.Source = new Uri("UserStats.xaml", UriKind.Relative);
+                    break;
+            }
         }
     }
 }

@@ -47,7 +47,7 @@ namespace LOTTERIA_Kiosk.View
 
         private void Manager_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/Manager.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/Manager/Manager.xaml", UriKind.Relative));
         }
     }
 }

@@ -209,6 +209,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\ic_cash.png" />
+    <Resource Include="Assets\Icon\before.png" />
+    <Resource Include="Assets\Icon\circular.png" />
+    <Resource Include="Assets\Icon\manager.png" />
+    <Resource Include="Assets\Icon\next.png" />
+    <Resource Include="Assets\Icon\pack.png" />
+    <Resource Include="Assets\Icon\store.png" />
+    <Content Include="Assets\Lotteria_Movie.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Icon\home_button.png" />

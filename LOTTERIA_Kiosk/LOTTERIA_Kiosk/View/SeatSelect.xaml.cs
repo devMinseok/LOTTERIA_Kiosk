@@ -24,5 +24,18 @@ namespace LOTTERIA_Kiosk.View
         {
             InitializeComponent();
         }
+        private void Before_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/MealPlaceSelect.xaml", UriKind.Relative));
+        }
+        private void Next_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/PaymentSelect.xaml", UriKind.Relative));
+        }
+
+        private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+        }
     }
 }

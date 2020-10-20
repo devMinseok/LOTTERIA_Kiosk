@@ -36,5 +36,6 @@ namespace LOTTERIA_Kiosk.View
                 NavigationService.GoBack();
             }
         }
+
     }
 }

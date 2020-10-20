@@ -15,20 +15,24 @@
             <RowDefinition Height="0.91*"/>
             <RowDefinition Height="0.04*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Row="0" Background="LightGray">
             <TextBlock x:Name="currentTimeTB" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
             <Button HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0">
-                <Image Source="/Assets/Icon/home_button.png"/> 
+                <Image Source="/Assets/Icon/home_button.png"/>
             </Button>
         </Grid>
-        
+
         <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="379*"/>
+                <ColumnDefinition Width="18*"/>
+            </Grid.ColumnDefinitions>
             <Frame Name="frame_content"
-                   Source="/View/Home.xaml" 
-                   NavigationUIVisibility="Hidden"/>
+                   Source="/View/Home.xaml"
+                   NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" Margin="0,0,-0.4,-0.4"/>
         </Grid>
-        
+
         <Grid Grid.Row="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel.Resources>
@@ -70,7 +74,7 @@
                     <Button Background="Silver" Content="Manager" Click="DevButtonClick" Grid.Column="8"/>
                     <!-- 관리자 화면-->
                 </Grid>
-                
+
             </StackPanel>
         </Grid>
     </Grid>

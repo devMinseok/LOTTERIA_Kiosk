@@ -23,6 +23,8 @@ namespace LOTTERIA_Kiosk.View
         public CardPayment()
         {
             InitializeComponent();
+
         }
+
     }
 }

@@ -23,15 +23,31 @@ namespace LOTTERIA_Kiosk.View
         public Home()
         {
             InitializeComponent();
+
+            this.startMedia.Play();
+            this.startMedia.MediaEnded += new RoutedEventHandler(startMedia_MediaEnded);
+
+        }
+        private void startMedia_MediaEnded(object sender, RoutedEventArgs e)
+
+        {
+
+            this.startMedia.Stop();
+
+            this.startMedia.Position = TimeSpan.FromSeconds(0);
+
+            this.startMedia.Play();
+
         }
 
-        private void MoveToOrder(object sender, RoutedEventArgs e)
+        private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/View/Order.xaml", UriKind.Relative));
         }
 
-
-
-
+        private void Manager_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/Manager/Manager.xaml", UriKind.Relative));
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LOTTERIA_Kiosk.Common;
+using LOTTERIA_Kiosk.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,45 @@ namespace LOTTERIA_Kiosk.View
         {
             lbMenus.ItemsSource = App.FoodData.foodList.FindAll(x => x.Category == category);
         }
+
+        private void lbMenus_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Food food = lbMenus.SelectedItem as Food;
+            
+            AddSelectedMenu(food);
+        }
+
+        public void AddSelectedMenu(Food food)
+        {
+            if (App.SelectedMenuList.Exists(x => x.Name == food.Name))
+            {
+                App.SelectedMenuList.Find(x => x.Name == food.Name).Count++;
+            }
+            else
+            {
+                food.Count = 1;
+                App.SelectedMenuList.Add(food);
+            }
+
+            LoadMenuList();
+        }
+
+        public void LoadMenuList()
+        {
+            lvOrderList.ItemsSource = App.SelectedMenuList;
+            lvOrderList.Items.Refresh();
+        }
+
+        public void MinusMenuCount(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void PlusFoodCount(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
     }
 }

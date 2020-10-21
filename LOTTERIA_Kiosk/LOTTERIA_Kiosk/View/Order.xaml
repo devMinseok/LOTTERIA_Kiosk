@@ -30,10 +30,10 @@
         </Grid.ColumnDefinitions>
 
         <!-- 우측 영역 -->
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0" Margin="10,20,10,20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.15*"/>
-                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.8*"/>
                 <RowDefinition Height="0.1*"/>
             </Grid.RowDefinitions>
 
@@ -56,7 +56,12 @@
 
             <!-- 메뉴 리스트 -->
             <Grid Grid.Row="1">
-                <ListBox x:Name="lbMenus" Margin="60,0,60,0" FontSize="20" FontWeight="SemiBold" VerticalAlignment="Center" BorderBrush="Transparent" Background="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox x:Name="lbMenus" Margin="70,0,70,0" FontSize="20"
+                         FontWeight="SemiBold" VerticalAlignment="Center" 
+                         BorderBrush="Transparent" Background="Transparent"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         MouseLeftButtonUp="lbMenus_MouseLeftButtonUp">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <!--<WrapPanel />-->
@@ -77,13 +82,60 @@
             </Grid>
 
             <Grid Grid.Row="2">
-                
+                <StackPanel Orientation="Horizontal">
+                    <Button Margin="0,0,0,0">
+                        <Image Source="/Assets/Icon/before.png" Width="100" Height="50"/>
+                    </Button>
+
+                    <Button>
+                        <Image Source="/Assets/Icon/next.png" Width="100" Height="50"/>
+                    </Button>
+
+                </StackPanel>
             </Grid>
         </Grid>
 
         <!-- 좌측 영역 -->
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Margin="10,20,10,20">
+            <StackPanel Orientation="Horizontal">
+                <ListView x:Name="lvOrderList">
 
+                    <ListView.Resources>
+                        <DataTemplate x:Key="Templ">
+                            <TextBlock HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                        <Style x:Key="HeaderStyle" TargetType="GridViewColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </ListView.Resources>
+                    
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="메뉴" DisplayMemberBinding="{Binding Name}" Width="300"/>
+
+                            <GridViewColumn Width="200" Header="수량">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="-" Height="30" Width="20" HorizontalAlignment="Center" Click="MinusMenuCount"/>
+                                            <TextBlock Text="{Binding Count}" Width="20" Height="20"/>
+                                            <Button Content="+" Height="30" Width="20" HorizontalAlignment="Center" Click="PlusFoodCount"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="가격" DisplayMemberBinding="{Binding Price}" Width="200"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Button></Button>
+
+                <TextBlock></TextBlock>
+                <Button></Button>
+                <Button></Button>
+            </StackPanel>
         </Grid>
 
 

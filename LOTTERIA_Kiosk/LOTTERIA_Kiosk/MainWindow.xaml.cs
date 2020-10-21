@@ -65,7 +65,7 @@ namespace LOTTERIA_Kiosk
                 {
                     //Test test = new Test();
                     //test.Show();
-                    frame_content.Source = new Uri("/View/Manager.xaml", UriKind.Relative);
+                    frame_content.Source = new Uri("/View/Manager/Manager.xaml", UriKind.Relative);
                 }
             }
         }

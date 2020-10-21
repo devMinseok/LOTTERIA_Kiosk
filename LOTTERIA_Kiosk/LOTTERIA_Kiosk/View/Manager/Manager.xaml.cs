@@ -31,6 +31,14 @@ namespace LOTTERIA_Kiosk.View.Manager
             Button buttonSender = sender as Button;
             switch (buttonSender.Name)
             {
+                case "btn_SystemManage":
+                    frame_stats.Source = new Uri("MenuStats.xaml", UriKind.Relative);
+                    break;
+
+                case "btn_Discount":
+                    frame_stats.Source = new Uri("MenuStats.xaml", UriKind.Relative);
+                    break;
+
                 case "btn_MenuStats":
                     frame_stats.Source = new Uri("MenuStats.xaml", UriKind.Relative);
                     break;
@@ -51,6 +59,15 @@ namespace LOTTERIA_Kiosk.View.Manager
                     frame_stats.Source = new Uri("UserStats.xaml", UriKind.Relative);
                     break;
             }
+        }
+
+        private void btn_before_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
+                
         }
     }
 }

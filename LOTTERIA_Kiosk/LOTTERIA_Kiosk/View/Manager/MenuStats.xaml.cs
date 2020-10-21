@@ -1,7 +1,9 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
+using LOTTERIA_Kiosk.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +24,35 @@ namespace LOTTERIA_Kiosk.View.Manager
     /// </summary>
     public partial class MenuStats : Page
     {
-        public MenuStats()
+        /*public MenuStats()
         {
             InitializeComponent();
 
+            Loaded += MenuStats_Loaded;
+
+            DataContext = this;
+        }
+
+        private void MenuStats_Loaded(object sender, RoutedEventArgs e)
+        {
+            App.FoodData.Load();
+            InitChart();
+        }
+
+        public SeriesCollection SeriesCollection { get; set; }
+
+        private string[] _label;
+        public string[] Labels
+        {
+            get => _label;
+            set => _label = value;
+        }
+        public Func<double, string> Formatter { get; set; }
+
+        void InitChart()
+        {
+            if (App.FoodData.foodList == null)
+                return;
             SeriesCollection = new SeriesCollection
             {
                 new ColumnSeries
@@ -35,26 +62,32 @@ namespace LOTTERIA_Kiosk.View.Manager
                 }
             };
 
-            //adding series will update and animate the chart automatically
-            SeriesCollection.Add(new ColumnSeries
+            //foreach (Food food in App.FoodData.foodList)
+            //{
+            //    Labels.Append(food.Name);
+            //}
+
+            Labels = new[]
             {
-                Title = "와퍼",
-                Values = new ChartValues<double> { 1100, 56000, 42000, 12000 }
-            });
+                "Shea Ferriera",
+                "Maurita Powel",
+                "Scottie Brogdon",
+                "Teresa Kerman",
+                "Nell Venuti",
+                "Anibal Brothers",
+                "Anderson Dillman"
+            };
 
-            //also adding values updates and animates the chart automatically
-
-            Labels = new[] { "Maria", "Susan", "Charles", "Frida" };
             Formatter = value => value.ToString("N");
 
             DataContext = this;
+
         }
+        */
+        public MenuStats()
+        {
 
-
-
-        public SeriesCollection SeriesCollection { get; set; }
-        public string[] Labels { get; set; }
-        public Func<double, string> Formatter { get; set; }
+        }
     }
-    
+
 }

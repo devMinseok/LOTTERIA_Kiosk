@@ -26,14 +26,17 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="9*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Button Click="Stats_Button_Click"
-                        Content="회원이 주문한 메뉴" />
+                        Name="btn_SystemManage"
+                        Content="기기 관리" />
             </Grid>
             <Grid Grid.Row="1">
                 <Button Click="Stats_Button_Click"
-                        Content="회원이 주문한 메뉴" />
+                        Name="btn_Discount"
+                        Content="할인 적용" />
 
             </Grid>
             <Grid Grid.Row="2">
@@ -68,6 +71,11 @@
 
             <Grid Grid.Row="7">
 
+            </Grid>
+            <Grid Grid.Row="8">
+                <Button Click="btn_before_Click"
+                        Name="btn_before"
+                        Content="이전" />
             </Grid>
 
         </Grid>

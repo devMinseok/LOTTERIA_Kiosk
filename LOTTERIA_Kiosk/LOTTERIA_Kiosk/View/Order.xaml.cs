@@ -68,16 +68,97 @@ namespace LOTTERIA_Kiosk.View
         {
             lvOrderList.ItemsSource = App.SelectedMenuList;
             lvOrderList.Items.Refresh();
+            tbTotalPrice.Text = GetTotalPrice().ToString();
         }
 
-        public void MinusMenuCount(object sender, RoutedEventArgs e)
+        private static Food ListView_GetItem(RoutedEventArgs e)
         {
-
+            DependencyObject dep = (DependencyObject)e.OriginalSource;
+            while(!(dep is System.Windows.Controls.ListViewItem))
+            {
+                try
+                {
+                    dep = VisualTreeHelper.GetParent(dep);
+                }
+                catch 
+                {
+                    return null;
+                }
+            }
+            ListViewItem item = (ListViewItem)dep;
+            Food content = (Food)item.Content;
+            return content;
         }
 
-        public void PlusFoodCount(object sender, RoutedEventArgs e)
+        private void MinusMenuCount(object sender, RoutedEventArgs e)
         {
+            Food food = ListView_GetItem(e);
+            food.Count = food.Count - 1;
 
+            if (food.Count < 1)
+            {
+                if (App.SelectedMenuList.Exists(x => x.Name == food.Name))
+                {
+                    App.SelectedMenuList.Remove(food);
+                }
+            }
+
+            LoadMenuList();
+        }
+
+        private void PlusFoodCount(object sender, RoutedEventArgs e)
+        {
+            Food food = ListView_GetItem(e);
+            food.Count = food.Count + 1;
+            LoadMenuList();
+        }
+        private int GetTotalPrice()
+        {
+            int total = 0;
+            foreach (Food food in App.SelectedMenuList)
+            {
+                total += food.Count * food.Price;
+            }
+
+            return total;
+        }
+        private void OrderReset(object sender, RoutedEventArgs e)
+        {
+            if (App.SelectedMenuList.Count < 1)
+            {
+                MessageBox.Show("먼저 메뉴를 선택해주세요.", "롯데리아");
+                return;
+            }
+
+            if (MessageBox.Show("주문 내용을 전부 삭제하시겠습니까?", "롯데리아", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                App.SelectedMenuList.Clear();
+
+                LoadMenuList();
+
+                MessageBox.Show("삭제되었습니다.", "롯데리아");
+            }
+            else
+            {
+                MessageBox.Show("취소되었습니다.", "롯데리아");
+            }
+        }
+
+        private void OrderCancel(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("주문을 취소하시겠습니까?", "롯데리아", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                NavigationService.Navigate(new Uri("/View/Home.xaml", UriKind.Relative));
+                App.SelectedMenuList.Clear();
+            } else
+            {
+                MessageBox.Show("취소되었습니다.", "롯데리아");
+            }
+        }
+
+        private void OrderNext(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/MealPlaceSelect.xaml", UriKind.Relative));
         }
 
 

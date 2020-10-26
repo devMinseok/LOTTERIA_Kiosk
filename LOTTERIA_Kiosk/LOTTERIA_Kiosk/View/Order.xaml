@@ -10,63 +10,161 @@
 
     <Page.Resources>
         <Style x:Key="CategoryStyle" TargetType="ListBoxItem">
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="BorderBrush" Value="#C63636"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0.5"/>
             <Setter Property="Background" Value="White"/>
-            <Setter Property="Foreground" Value="#C63636"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontFamily" Value="Baskerville,Georgia"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
+
     </Page.Resources>
 
-    <Grid Background="White">
+    <Grid Background="#F1F2F4">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.6*"/>
             <ColumnDefinition Width="0.4*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- 우측 영역 -->
-        <Grid Grid.Column="0">
+        <!-- 좌측 영역 -->
+        <Grid Grid.Column="0" Margin="10,20,10,20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.1*"/>
             </Grid.RowDefinitions>
 
             <!-- 메뉴 카테고리 -->
             <Grid Grid.Row="0">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ListBox x:Name="lbCategory" Margin="0,0,0,0" BorderBrush="Transparent"  Background="Transparent">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
 
-                    <ListBox x:Name="lbCategory">
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
+                    <ListBoxItem Content="햄버거" Style="{StaticResource CategoryStyle}"/>
+                    <ListBoxItem Content="음료수" Style="{StaticResource CategoryStyle}"/>
+                    <ListBoxItem Content="사이드 메뉴" Style="{StaticResource CategoryStyle}"/>
+                    <ListBoxItem Content="세트 메뉴" Style="{StaticResource CategoryStyle}"/>
 
-                        <ListBoxItem Content="햄버거" Style="{StaticResource CategoryStyle}"/>
-                        <ListBoxItem Content="음료수" Style="{StaticResource CategoryStyle}"/>
-                        <ListBoxItem Content="사이드 메뉴" Style="{StaticResource CategoryStyle}"/>
-                        <ListBoxItem Content="세트 메뉴" Style="{StaticResource CategoryStyle}"/>
-                    </ListBox>
-
-                </StackPanel>
+                </ListBox>
             </Grid>
 
             <!-- 메뉴 리스트 -->
             <Grid Grid.Row="1">
-                
+                <ListBox x:Name="lbMenus" Margin="70,0,70,0" FontSize="20"
+                         FontWeight="SemiBold" VerticalAlignment="Center" 
+                         BorderBrush="Transparent" Background="Transparent"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         MouseLeftButtonUp="lbMenus_MouseLeftButtonUp">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <!--<WrapPanel />-->
+                            <UniformGrid Columns="3" Rows="3"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
 
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Image Source="{Binding ImagePath}"/>
+                                <TextBlock Text="{Binding Name}" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{Binding Price}" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <StackPanel Orientation="Horizontal">
+                    <Button Margin="0,0,0,0">
+                        <Image Source="/Assets/Icon/before.png" Width="100" Height="50"/>
+                    </Button>
+
+                    <Button>
+                        <Image Source="/Assets/Icon/next.png" Width="100" Height="50"/>
+                    </Button>
+
+                </StackPanel>
             </Grid>
         </Grid>
 
-        <!-- 좌측 영역 -->
-        <Grid Grid.Column="1">
+        <!-- 우측 영역 -->
+        <Grid Grid.Column="1" Margin="10,20,10,20">
 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <ListView x:Name="lvOrderList">
+                    <ListView.Resources>
+                        <DataTemplate x:Key="Templ">
+                            <TextBlock HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                        <Style x:Key="HeaderStyle" TargetType="GridViewColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </ListView.Resources>
+
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="메뉴" DisplayMemberBinding="{Binding Name}" Width="300"/>
+
+                            <GridViewColumn Width="200" Header="수량">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="-" Height="30" Width="20" HorizontalAlignment="Center" Click="MinusMenuCount"/>
+                                            <TextBlock Text="{Binding Count}" Width="20" Height="20"/>
+                                            <Button Content="+" Height="30" Width="20" HorizontalAlignment="Center" Click="PlusFoodCount"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="가격" DisplayMemberBinding="{Binding Price}" Width="200"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <StackPanel HorizontalAlignment="Right">
+                    <Button Click="OrderReset">
+                        <Image Source="/Assets/Icon/next.png" Width="100" Height="40"/>
+                    </Button>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="총 주문 금액: " FontSize="14" Foreground="Black"/>
+                        <TextBlock Text="0" Margin="10, 0, 0, 0" x:Name="tbTotalPrice" FontSize="14" Foreground="Black"/>
+                        <TextBlock Text="원" FontSize="14" Foreground="Black"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                    <Button Click="OrderCancel">
+                        <Image Source="/Assets/Icon/next.png" Width="100" Height="40"/>
+                    </Button>
+
+                    <Button Click="OrderNext">
+                        <Image Source="/Assets/Icon/next.png" Width="100" Height="40"/>
+                    </Button>
+                </StackPanel>
+                
+                
+            </Grid>
         </Grid>
 
 

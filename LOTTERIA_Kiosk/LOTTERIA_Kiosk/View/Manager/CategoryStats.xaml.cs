@@ -26,23 +26,8 @@ namespace LOTTERIA_Kiosk.View.Manager
         {
             InitializeComponent();
 
-            SeriesCollection = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = "판매 수량",
-                    Values = new ChartValues<double> { 51, 25, 60, 4 }
-                }
-            };
-
-            Labels = new[] { "햄버거", "음료수", "디저트", "치킨" };
-            Formatter = value => value.ToString("N");
             DataContext = this;
         }
-        public SeriesCollection SeriesCollection { get; set; }
-        public string[] Labels { get; set; }
-        public Func<double, string> Formatter { get; set; }
-
     }
-}
 
+}

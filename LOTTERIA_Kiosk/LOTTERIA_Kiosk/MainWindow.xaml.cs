@@ -36,6 +36,7 @@ namespace LOTTERIA_Kiosk
             splashScreen.Show(true);
             Thread.Sleep(100);
 
+            App.FoodData.Load();
             App.SeatData.Load();
 
             SetTimer();

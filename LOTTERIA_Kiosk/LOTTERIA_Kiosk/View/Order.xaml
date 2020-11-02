@@ -21,7 +21,6 @@
             <Setter Property="FontFamily" Value="Baskerville,Georgia"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
-
     </Page.Resources>
 
     <Grid Background="#F1F2F4">
@@ -40,18 +39,12 @@
 
             <!-- 메뉴 카테고리 -->
             <Grid Grid.Row="0">
-                <ListBox x:Name="lbCategory" Margin="0,0,0,0" BorderBrush="Transparent"  Background="Transparent">
+                <ListBox x:Name="lbMenuCategory" Margin="0,0,0,0" BorderBrush="Transparent"  Background="Transparent">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
-
-                    <ListBoxItem Content="햄버거" Style="{StaticResource CategoryStyle}"/>
-                    <ListBoxItem Content="음료수" Style="{StaticResource CategoryStyle}"/>
-                    <ListBoxItem Content="사이드 메뉴" Style="{StaticResource CategoryStyle}"/>
-                    <ListBoxItem Content="세트 메뉴" Style="{StaticResource CategoryStyle}"/>
-
                 </ListBox>
             </Grid>
 

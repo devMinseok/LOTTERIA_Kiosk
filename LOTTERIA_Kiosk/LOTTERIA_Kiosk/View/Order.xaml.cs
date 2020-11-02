@@ -2,7 +2,11 @@
 using LOTTERIA_Kiosk.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,10 +35,10 @@ namespace LOTTERIA_Kiosk.View
 
         private void Order_Loaded(object sender, RoutedEventArgs e)
         {
-            App.FoodData.Load();
-            App.SeatData.Load();
-
             lbMenus.ItemsSource = App.FoodData.foodList;
+
+            LoadCategory();
+            LoadMenuList();
         }
 
         private void SetLvFoodItem(MenuCategory category)
@@ -69,6 +73,16 @@ namespace LOTTERIA_Kiosk.View
             lvOrderList.ItemsSource = App.SelectedMenuList;
             lvOrderList.Items.Refresh();
             tbTotalPrice.Text = GetTotalPrice().ToString();
+        }
+
+        public void LoadCategory()
+        {
+            InitializeComponent();
+            Array valArray = typeof(MenuCategory).GetEnumValues();
+            foreach(MenuCategory menuCategory in valArray)
+            {
+                lbMenuCategory.Items.Add(menuCategory);
+            }
         }
 
         private static Food ListView_GetItem(RoutedEventArgs e)
@@ -158,7 +172,13 @@ namespace LOTTERIA_Kiosk.View
 
         private void OrderNext(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/MealPlaceSelect.xaml", UriKind.Relative));
+            if (App.SelectedMenuList.Count == 0)
+            {
+                MessageBox.Show("먼저 메뉴를 선택해주세요.", "롯데리아");
+            } else
+            {
+                NavigationService.Navigate(new Uri("/View/MealPlaceSelect.xaml", UriKind.Relative));
+            }
         }
 
 

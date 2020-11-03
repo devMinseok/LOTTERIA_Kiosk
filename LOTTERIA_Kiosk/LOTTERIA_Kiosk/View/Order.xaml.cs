@@ -31,19 +31,15 @@ namespace LOTTERIA_Kiosk.View
             InitializeComponent();
 
             Loaded += Order_Loaded;
+            lbMenuCategory.AddHandler(MouseLeftButtonDownEvent, new MouseButtonEventHandler(lbMenuCategory_MouseLeftButtonDown), true);
         }
 
         private void Order_Loaded(object sender, RoutedEventArgs e)
         {
             lbMenus.ItemsSource = App.FoodData.foodList;
 
-            LoadCategory();
+            LoadCategoryButton();
             LoadMenuList();
-        }
-
-        private void SetLvFoodItem(MenuCategory category)
-        {
-            lbMenus.ItemsSource = App.FoodData.foodList.FindAll(x => x.Category == category);
         }
 
         private void lbMenus_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -51,6 +47,19 @@ namespace LOTTERIA_Kiosk.View
             Food food = lbMenus.SelectedItem as Food;
             
             AddSelectedMenu(food);
+        }
+
+        private void lbMenuCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MenuCategory selectedCategory = (MenuCategory)lbMenuCategory.SelectedValue;
+
+            SetLvFoodItem(selectedCategory);
+        }
+
+        private void SetLvFoodItem(MenuCategory category)
+        {
+            lbMenus.ItemsSource = App.FoodData.foodList.FindAll(x => x.Category == category);
+            LoadMenuList();
         }
 
         public void AddSelectedMenu(Food food)
@@ -75,7 +84,7 @@ namespace LOTTERIA_Kiosk.View
             tbTotalPrice.Text = GetTotalPrice().ToString();
         }
 
-        public void LoadCategory()
+        public void LoadCategoryButton()
         {
             InitializeComponent();
             Array valArray = typeof(MenuCategory).GetEnumValues();
@@ -126,6 +135,7 @@ namespace LOTTERIA_Kiosk.View
             food.Count = food.Count + 1;
             LoadMenuList();
         }
+
         private int GetTotalPrice()
         {
             int total = 0;
@@ -136,6 +146,7 @@ namespace LOTTERIA_Kiosk.View
 
             return total;
         }
+
         private void OrderReset(object sender, RoutedEventArgs e)
         {
             if (App.SelectedMenuList.Count < 1)
@@ -181,6 +192,14 @@ namespace LOTTERIA_Kiosk.View
             }
         }
 
+        private void PreviousButton_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

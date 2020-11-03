@@ -9,6 +9,39 @@
       Title="PaymentCompleted">
 
     <Grid>
-        
+        <StackPanel Margin="0 50 0 0">
+        <TextBlock Text="결제가 완료되었습니다."
+                   HorizontalAlignment="Center"
+                   FontSize="24"/>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Height="30">
+                <TextBlock Text="총 주문 금액: "
+                           FontSize="18"
+                           Foreground="Black" />
+                <TextBlock Text="0"
+                           Margin="10, 0, 0, 0"
+                           x:Name="tbTotalPrice"
+                           FontSize="18"
+                           Foreground="Black" />
+                <TextBlock Text="원"
+                           FontSize="18"
+                           Foreground="Black" />
+            </StackPanel>
+            <TextBlock Text="주문번호"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Bottom"
+                       Name="text" />
+        </StackPanel>
+        <Button Width="150"
+                Height="150"
+                Name="btn_GoHome"
+                Click="btn_GoHome_Click">
+            <StackPanel VerticalAlignment="Center"
+                        Orientation="Vertical">
+                <TextBlock Text="홈으로 이동하기" 
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </Page>

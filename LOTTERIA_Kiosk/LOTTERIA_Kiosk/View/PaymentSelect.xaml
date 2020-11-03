@@ -25,14 +25,27 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <TextBlock Name="TotalPrice"
-                       Height="30"
-                       HorizontalAlignment="Right"
-                       Text="총 금액 : 0원"
-                       Margin="0,300,135,0"/>
+            
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,300,135,0"
+                        Height="30"
+                        HorizontalAlignment="Right">
+                <TextBlock Text="총 주문 금액: "
+                           FontSize="14"
+                           Foreground="Black" />
+                <TextBlock Text="0"
+                           Margin="10, 0, 0, 0"
+                           x:Name="tbTotalPrice"
+                           FontSize="14"
+                           Foreground="Black" />
+                <TextBlock Text="원"
+                           FontSize="14"
+                           Foreground="Black" />
+            </StackPanel>
             <Button Height="50"
                     Width="100"
                     Content="이전"
+                    Name="btn_before"
                     Click="btn_before_Click"
                     Margin="0,500,600,0"/>
         </Grid>

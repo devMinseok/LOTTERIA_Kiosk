@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LOTTERIA_Kiosk.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,21 @@ namespace LOTTERIA_Kiosk.View
     /// </summary>
     public partial class CardPayment : Page
     {
+        Boolean isRecognition = false;
         public CardPayment()
         {
             InitializeComponent();
 
             webcam.CameraIndex = 0;
+            tbTotalPrice.Text = GetTotalPrice().ToString();
         }
 
-        private void webcam_QrDecoded(object sender, string e) { tbRecog.Text = e; }
+        private void webcam_QrDecoded(object sender, string e) {
+            isRecognition = true;
+            tbRecog.Text = e;
+        }
+
+
 
         private void btn_before_Click(object sender, RoutedEventArgs e)
         {
@@ -36,6 +44,27 @@ namespace LOTTERIA_Kiosk.View
                 NavigationService.GoBack();
             }
         }
+        private int GetTotalPrice()
+        {
+            int total = 0;
+            foreach (Food food in App.SelectedMenuList)
+            {
+                total += food.Count * food.Price;
+            }
 
+            return total;
+        }
+
+        private void btn_Pay_Click(object sender, RoutedEventArgs e)
+        {
+            if(!isRecognition)
+            {
+                MessageBox.Show("QR코드를 인식해주세요.", "롯데리아");
+            }
+            else
+            {
+                NavigationService.Navigate(new Uri("/View/PaymentCompleted.xaml", UriKind.Relative));
+            }
+        }
     }
 }

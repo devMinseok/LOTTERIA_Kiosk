@@ -55,24 +55,24 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Background="Red" Content="Home" Click="DevButtonClick" Grid.Column="0"/>
-                    <!-- 홈 화면 -->
+                    <!--<Button Background="Red" Content="Home" Click="DevButtonClick" Grid.Column="0"/>
+                    --><!-- 홈 화면 --><!--
                     <Button Background="Orange" Content="Order"  Click="DevButtonClick" Grid.Column="1"/>
-                    <!-- 주문 화면 -->
+                    --><!-- 주문 화면 --><!--
                     <Button Background="Yellow" Content="MealPlaceSelect" Click="DevButtonClick" Grid.Column="2"/>
-                    <!-- 식사 장소 선택 화면 -->
+                    --><!-- 식사 장소 선택 화면 --><!--
                     <Button Background="Blue" Content="SeatSelect" Click="DevButtonClick" Grid.Column="3"/>
-                    <!-- 좌석 선택 화면 -->
+                    --><!-- 좌석 선택 화면 --><!--
                     <Button Background="Green" Content="PaymentSelect"  Click="DevButtonClick" Grid.Column="4"/>
-                    <!-- 결제 수단 화면 -->
+                    --><!-- 결제 수단 화면 --><!--
                     <Button Background="DarkBlue" Content="CashPayment" Click="DevButtonClick" Grid.Column="5"/>
-                    <!-- 현금 결제 화면 -->
+                    --><!-- 현금 결제 화면 --><!--
                     <Button Background="Violet" Content="CardPayment"  Click="DevButtonClick" Grid.Column="6"/>
-                    <!-- 카드 결제 화면 -->
+                    --><!-- 카드 결제 화면 --><!--
                     <Button Background="Gold" Content="PaymentCompleted"  Click="DevButtonClick" Grid.Column="7"/>
-                    <!-- 결제 완료 화면 -->
+                    --><!-- 결제 완료 화면 --><!--
                     <Button Background="Silver" Content="Manager" Click="DevButtonClick" Grid.Column="8"/>
-                    <!-- 관리자 화면-->
+                    --><!-- 관리자 화면-->
                 </Grid>
 
             </StackPanel>

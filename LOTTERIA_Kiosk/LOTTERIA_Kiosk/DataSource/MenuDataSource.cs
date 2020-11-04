@@ -74,7 +74,7 @@ namespace LOTTERIA_Kiosk.DataSource
                 new Food() { Category = MenuCategory.디저트, Name = "콘샐러드", Price = 1700, ImagePath = @"/Assets/Menu/Desert/콘샐러드.jpg" },
                 new Food() { Category = MenuCategory.디저트, Name = "토네이도(녹차)", Price = 2300, ImagePath = @"/Assets/Menu/Desert/토네이도(녹차).jpg" },
                 new Food() { Category = MenuCategory.디저트, Name = "토네이도(스트로베리)", Price = 2400, ImagePath = @"/Assets/Menu/Desert/토네이도(스트로베리).jpg" },
-                new Food() { Category = MenuCategory.디저트, Name = "토네이도(초코쿠키)", Price = 2300, ImagePath = @"/Assets/Menu/Desert/토네이도(초코쿠기).jpg" },
+                new Food() { Category = MenuCategory.디저트, Name = "토네이도(초코쿠키)", Price = 2300, ImagePath = @"/Assets/Menu/Desert/토네이도(초코쿠키).jpg" },
                 new Food() { Category = MenuCategory.디저트, Name = "포테이토", Price = 1500, ImagePath = @"/Assets/Menu/Desert/포테이토.jpg" },
 
                 // 치킨

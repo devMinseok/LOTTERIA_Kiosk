@@ -46,17 +46,20 @@ namespace LOTTERIA_Kiosk.View
         {
             Food food = lbMenus.SelectedItem as Food;
             
-            AddSelectedMenu(food);
+            if (food != null) {
+                AddSelectedMenu(food);
+                lbMenus.SelectedIndex = -1;
+            }
         }
 
         private void lbMenuCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MenuCategory selectedCategory = (MenuCategory)lbMenuCategory.SelectedValue;
 
-            SetLvFoodItem(selectedCategory);
+            SetLbMenusItem(selectedCategory);
         }
 
-        private void SetLvFoodItem(MenuCategory category)
+        private void SetLbMenusItem(MenuCategory category)
         {
             lbMenus.ItemsSource = App.FoodData.foodList.FindAll(x => x.Category == category);
             LoadMenuList();
@@ -92,6 +95,8 @@ namespace LOTTERIA_Kiosk.View
             {
                 lbMenuCategory.Items.Add(menuCategory);
             }
+
+            SetLbMenusItem(MenuCategory.햄버거); // 초기 선택
         }
 
         private static Food ListView_GetItem(RoutedEventArgs e)
@@ -192,14 +197,38 @@ namespace LOTTERIA_Kiosk.View
             }
         }
 
+        int index = 0;
+
         private void PreviousButton_Click(object sender, RoutedEventArgs e)
         {
+            if (lbMenus.Items.Count == 0)
+            {
+                return;
+            }
 
+            index -= 5;
+
+            int rowIndex = Math.Min(Math.Max(0, index), lbMenus.Items.Count - 1);
+
+            lbMenus.SelectedIndex = rowIndex;
+            lbMenus.ScrollIntoView(lbMenus.SelectedItem);
+            lbMenus.SelectedIndex = -1;
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
+            if (lbMenus.Items.Count == 0)
+            {
+                return;
+            }
 
+            index += 5;
+
+            int rowIndex = Math.Min(Math.Max(0, index), lbMenus.Items.Count - 1);
+
+            lbMenus.SelectedIndex = rowIndex;
+            lbMenus.ScrollIntoView(lbMenus.SelectedItem);
+            lbMenus.SelectedIndex = -1;
         }
     }
 }

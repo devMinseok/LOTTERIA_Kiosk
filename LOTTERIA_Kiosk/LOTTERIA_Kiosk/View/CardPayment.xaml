@@ -50,13 +50,17 @@
                                   Width="500"
                                   Height="400"
                                   Margin="12"
-                                  QrDecoded="webcam_QrDecoded" />
+                                   />
+                <TextBlock Text="비회원입니다."
+                           Name="tbNotUser" 
+                           HorizontalAlignment="Center"
+                           Foreground="Red"/>
                 <Button Name="btn_Pay"
                         Content="결제하기"
                         Click="btn_Pay_Click"
                         Height="75"
-                        Width="150">
-                </Button>
+                        Margin="0 75 0 0"
+                        Width="150" />
 
             </StackPanel>
             

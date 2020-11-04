@@ -1,6 +1,7 @@
 ﻿using LOTTERIA_Kiosk.Model;
 using System;
 using System.Collections.Generic;
+using System.IO.Packaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,17 +23,46 @@ namespace LOTTERIA_Kiosk.View
     public partial class CardPayment : Page
     {
         Boolean isRecognition = false;
+        List<string> userList = new List<string>();
         public CardPayment()
         {
             InitializeComponent();
+            tbNotUser.Visibility = Visibility.Hidden;
+
+            userList.Add("신희송");
+            userList.Add("정재덕");
+            userList.Add("크리스");
 
             webcam.CameraIndex = 0;
+            btn_Pay.Visibility = Visibility.Hidden;
             tbTotalPrice.Text = GetTotalPrice().ToString();
+            webcam.QrDecoded += webcam_QrDecoded;
         }
 
         private void webcam_QrDecoded(object sender, string e) {
+
             isRecognition = true;
-            tbRecog.Text = e;
+            
+            bool isUser = false;
+
+            btn_Pay.Visibility = Visibility.Hidden;
+
+
+            foreach (string i in userList)
+            {
+                if(e == i)
+                {
+                    tbNotUser.Visibility = Visibility.Hidden;
+                    tbRecog.Text = e;
+                    btn_Pay.Visibility = Visibility.Visible;
+                    isUser = true;
+                }
+            }
+            if (!isUser)
+            {
+                tbNotUser.Visibility = Visibility.Visible;
+                //MessageBox.Show("등록되지 않은 회원입니다.", "롯데리아");
+            }
         }
 
 

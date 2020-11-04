@@ -48,12 +48,20 @@ namespace LOTTERIA_Kiosk.View
             }
         }
 
-        private void barcode_text_TextChanged(object sender, TextChangedEventArgs e)
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
-            if (a == barcode_text.Text)
+            if (e.Key == Key.Return)
             {
-                App.CurrentUser.CashReceiptCard = barcode_text.Text;
-                NavigationService.Navigate(new Uri("/View/PaymentCompleted.xaml", UriKind.Relative));
+                if (a == barcode_text.Text)
+                {
+                    App.CurrentUser.CashReceiptCard = barcode_text.Text;
+                    NavigationService.Navigate(new Uri("/View/PaymentCompleted.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    MessageBox.Show("인식할수 없는 카드 번호입니다. 관리자에게 문의 해주세요.", "롯데리아");
+                    barcode_text.Text = "";
+                }
             }
         }
     }

@@ -32,16 +32,22 @@
                        HorizontalAlignment="Center"
                        VerticalAlignment="Bottom"
                        Name="text" />
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <TextBlock Text="0" Name="autoMoveValue"/>
+                <TextBlock Text="초 후 자동으로 이동합니다." />
+            </StackPanel>
         </StackPanel>
+
         <Button Width="150"
                 Height="150"
                 Name="btn_GoHome"
                 Click="btn_GoHome_Click">
-            <StackPanel VerticalAlignment="Center"
-                        Orientation="Vertical">
+            
                 <TextBlock Text="홈으로 이동하기" 
                            HorizontalAlignment="Center"/>
-            </StackPanel>
         </Button>
+
+        
     </Grid>
 </Page>

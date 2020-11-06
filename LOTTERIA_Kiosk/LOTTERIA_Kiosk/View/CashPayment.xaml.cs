@@ -22,10 +22,13 @@ namespace LOTTERIA_Kiosk.View
     /// </summary>
     public partial class CashPayment : Page
     {
-        String a = "02345673";
+        List<string> barcodeValList = new List<string>();
         public CashPayment()
         {
             InitializeComponent();
+            barcodeValList.Add("2112345678900");
+            barcodeValList.Add("02345673");
+            barcodeValList.Add("9790260532113");
             barcode_text.Focus();
             tbTotalPrice.Text = GetTotalPrice().ToString();
         }
@@ -52,15 +55,16 @@ namespace LOTTERIA_Kiosk.View
         {
             if (e.Key == Key.Return)
             {
-                if (a == barcode_text.Text)
+                foreach (string i in barcodeValList)
                 {
-                    App.CurrentUser.CashReceiptCard = barcode_text.Text;
-                    NavigationService.Navigate(new Uri("/View/PaymentCompleted.xaml", UriKind.Relative));
-                }
-                else
-                {
-                    MessageBox.Show("인식할수 없는 카드 번호입니다. 관리자에게 문의 해주세요.", "롯데리아");
-                    barcode_text.Text = "";
+                    if (i == barcode_text.Text)
+                    {
+                        App.CurrentUser.CashReceiptCard = barcode_text.Text;
+                        NavigationService.Navigate(new Uri("/View/PaymentCompleted.xaml", UriKind.Relative));
+                    }
+                    else
+                    {
+                    }
                 }
             }
         }

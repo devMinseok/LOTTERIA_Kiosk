@@ -1,7 +1,9 @@
-﻿using System;
+﻿using LOTTERIA_Kiosk.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,9 +22,39 @@ namespace LOTTERIA_Kiosk.View
     /// </summary>
     public partial class CashPayment : Page
     {
+        String a = "02345673";
         public CashPayment()
         {
             InitializeComponent();
+            barcode_text.Focus();
+            tbTotalPrice.Text = GetTotalPrice().ToString();
+        }
+        private int GetTotalPrice()
+        {
+            int total = 0;
+            foreach (Food food in App.SelectedMenuList)
+            {
+                total += food.Count * food.Price;
+            }
+
+            return total;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
+        }
+
+        private void barcode_text_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (a == barcode_text.Text)
+            {
+                App.CurrentUser.CashReceiptCard = barcode_text.Text;
+                NavigationService.Navigate(new Uri("/View/PaymentCompleted.xaml", UriKind.Relative));
+            }
         }
     }
 }

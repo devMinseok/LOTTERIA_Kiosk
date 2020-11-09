@@ -12,8 +12,7 @@
 
     <Grid>
         <Grid HorizontalAlignment="Center">
-            <StackPanel
-                Margin="0,100,0,0">
+            <StackPanel Margin="0,100,0,0">
                 <TextBlock Text="카드 결제를 선택하였습니다."
                            FontSize="32"
                            HorizontalAlignment="Center" />
@@ -21,27 +20,53 @@
                            FontSize="32"
                            HorizontalAlignment="Center" />
 
-                <TextBlock Text="회원명 : 이용재"
-                           Name="tbRecog"
-                           FontSize="20"
-                           HorizontalAlignment="Center" />
-                <TextBlock Text="총 금액 : 0원"
-                           FontSize="20"
-                           HorizontalAlignment="Center" />
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="회원명 : "
+                               FontSize="20"
+                               Foreground="Black" />
+                    <TextBlock Text="이름"
+                               Margin="10, 0, 0, 0"
+                               x:Name="tbRecog"
+                               FontSize="20"
+                               Foreground="Black" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="총 주문 금액: "
+                               FontSize="20"
+                               Foreground="Black" />
+                    <TextBlock Text="0"
+                               Margin="10, 0, 0, 0"
+                               x:Name="tbTotalPrice"
+                               FontSize="20"
+                               Foreground="Black" />
+                    <TextBlock Text="원"
+                               FontSize="20"
+                               Foreground="Black" />
+                </StackPanel>
 
                 <qrcode:KQRWebCam x:Name="webcam"
                                   Width="500"
                                   Height="400"
                                   Margin="12"
                                   QrDecoded="webcam_QrDecoded" />
+                <Button Name="btn_Pay"
+                        Content="결제하기"
+                        Click="btn_Pay_Click"
+                        Height="75"
+                        Width="150">
+                </Button>
 
-                <Button Content="이전으로" 
-                        Name="btn_before"
-                        Click="btn_before_Click"
-                        Margin="0,150,0,0"
-                        Width="200"
-                        Height="80"/>
             </StackPanel>
+            
         </Grid>
+        <Button Name="btn_before"
+                Click="btn_before_Click"
+                Height="75"
+                Width="150"
+                Margin="0 800 1500 0">
+            <Image Source="/Assets/Icon/before.png"/>
+        </Button>
     </Grid>
 </Page>

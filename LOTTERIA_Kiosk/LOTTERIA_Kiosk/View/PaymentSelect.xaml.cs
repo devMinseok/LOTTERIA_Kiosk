@@ -24,12 +24,20 @@ namespace LOTTERIA_Kiosk.View
         public PaymentSelect()
         {
             InitializeComponent();
-            App.SelectedMenuList.Add(new Food() { Name = "불고기버거", Count = 3, Price = 4000 });
-            App.SelectedMenuList.Add(new Food() { Name = "니얼굴버거", Count = 2, Price = 12354 });
-            App.SelectedMenuList.Add(new Food() { Name = "덩기덕쿵더러러", Count = 6, Price = 122112 });
-            App.SelectedMenuList.Add(new Food() { Name = "대취타하라던데", Count = 1, Price = 116122 });
 
             menuList.ItemsSource = App.SelectedMenuList;
+            tbTotalPrice.Text = GetTotalPrice().ToString();
+        }
+
+        private int GetTotalPrice()
+        {
+            int total = 0;
+            foreach (Food food in App.SelectedMenuList)
+            {
+                total += food.Count * food.Price;
+            }
+
+            return total;
         }
 
         private void btn_cashpay_Click(object sender, RoutedEventArgs e)
@@ -48,6 +56,11 @@ namespace LOTTERIA_Kiosk.View
             {
                 NavigationService.GoBack();
             }
+        }
+
+        private void btn_before_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

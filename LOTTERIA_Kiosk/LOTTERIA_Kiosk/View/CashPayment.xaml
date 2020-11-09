@@ -5,10 +5,52 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LOTTERIA_Kiosk.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="CashPayment">
 
     <Grid>
-        
+        <StackPanel Orientation="Vertical"
+                   Margin="0,250,0,0" >
+        <TextBlock Text="현금 결제를 선택하셨습니다." 
+                   FontSize="32"
+                   HorizontalAlignment="Center"/>
+        <TextBlock Text="현금 영수증 카드를 제시해주세요."
+                       FontSize="32"
+                       HorizontalAlignment="Center" />
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Height="30">
+                <TextBlock Text="총 주문 금액: "
+                           FontSize="25"
+                           Foreground="Black" />
+                <TextBlock Text="0"
+                           Margin="10, 0, 0, 0"
+                           x:Name="tbTotalPrice"
+                           FontSize="25"
+                           Foreground="Black" />
+                <TextBlock Text="원"
+                           FontSize="25"
+                           Foreground="Black" />
+            </StackPanel>
+            <TextBox 
+                x:Name="barcode_text"
+                CaretBrush="White"
+                TextChanged="barcode_text_TextChanged"
+                Width="200" 
+                     Height="30"/>
+        </StackPanel>
+
+        <TextBlock Name="text" 
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"/>
+        <Button Background="White"
+                BorderThickness="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Click="Button_Click"
+                Margin="40 0 0 52">
+            <Image Source="/Assets/Icon/before.png"
+                   Width="150" />
+        </Button>
     </Grid>
 </Page>

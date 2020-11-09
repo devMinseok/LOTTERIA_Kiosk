@@ -8,5 +8,6 @@ namespace LOTTERIA_Kiosk.Network
 {
     class Network
     {
+
     }
 }

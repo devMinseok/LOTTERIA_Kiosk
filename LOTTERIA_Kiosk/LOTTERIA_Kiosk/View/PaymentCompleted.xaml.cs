@@ -29,7 +29,9 @@ namespace LOTTERIA_Kiosk.View
         {
             InitializeComponent();
             tbTotalPrice.Text = GetTotalPrice().ToString();
-            text.Text = App.CurrentUser.CashReceiptCard;
+            //text.Text = App.CurrentUser.CashReceiptCard;
+            App.SelectedMenuList.Clear();
+            tb_orderNumber.Text = "002";
             autoMoveValue.Text = "5";
             StartTimer();
         }
@@ -53,7 +55,7 @@ namespace LOTTERIA_Kiosk.View
 
         private void StartTimer()
         {
-            TimerClock.Interval = new TimeSpan(0, 0, 0, 0, 1000); // 200 milliseconds
+            TimerClock.Interval = new TimeSpan(0, 0, 0, 0, 1000);
 
             TimerClock.IsEnabled = true;
 
@@ -69,12 +71,11 @@ namespace LOTTERIA_Kiosk.View
                 NavigationService.Navigate(new Uri("/View/Home.xaml", UriKind.Relative));
                 TimerClock.Stop();
             }
+
             else
             {
                 autoMoveValue.Text = timerValue--.ToString();
             }
         }
-
-
     }
 }

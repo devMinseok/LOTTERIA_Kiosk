@@ -34,7 +34,7 @@ namespace LOTTERIA_Kiosk
         /// 주문 정보 데이터
         /// </summary>
         public static List<OrderInfo> OrderInfoData = new List<OrderInfo>();
-
+        
         /// <summary>
         /// 현재 사용자 데이터
         /// </summary>

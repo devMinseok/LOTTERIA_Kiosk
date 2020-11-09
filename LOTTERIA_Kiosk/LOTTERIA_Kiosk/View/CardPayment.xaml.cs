@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Newtonsoft.Json.Linq;
 
 namespace LOTTERIA_Kiosk.View
 {
@@ -94,6 +95,8 @@ namespace LOTTERIA_Kiosk.View
             else
             {
                 NavigationService.Navigate(new Uri("/View/PaymentCompleted.xaml", UriKind.Relative));
+
+
             }
         }
     }

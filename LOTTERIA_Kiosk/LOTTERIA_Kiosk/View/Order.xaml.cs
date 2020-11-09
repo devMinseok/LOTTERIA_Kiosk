@@ -73,7 +73,6 @@ namespace LOTTERIA_Kiosk.View
             }
             else
             {
-                food.Count = 1;
                 App.SelectedMenuList.Add(food);
             }
 
@@ -121,14 +120,12 @@ namespace LOTTERIA_Kiosk.View
         private void MinusMenuCount(object sender, RoutedEventArgs e)
         {
             Food food = ListView_GetItem(e);
-            food.Count = food.Count - 1;
+            food.Count -= 1;
 
             if (food.Count < 1)
             {
-                if (App.SelectedMenuList.Exists(x => x.Name == food.Name))
-                {
-                    App.SelectedMenuList.Remove(food);
-                }
+                App.SelectedMenuList.Remove(food);
+                food.Count = 1;
             }
 
             LoadMenuList();
@@ -141,12 +138,12 @@ namespace LOTTERIA_Kiosk.View
             LoadMenuList();
         }
 
-        private int GetTotalPrice()
+        private double GetTotalPrice()
         {
-            int total = 0;
+            double total = 0;
             foreach (Food food in App.SelectedMenuList)
             {
-                total += food.Count * food.Price;
+                total += food.Price;
             }
 
             return total;

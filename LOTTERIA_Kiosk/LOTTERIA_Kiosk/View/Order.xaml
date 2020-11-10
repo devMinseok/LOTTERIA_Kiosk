@@ -21,6 +21,24 @@
             <Setter Property="FontFamily" Value="Baskerville,Georgia"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
+
+        <Style x:Key="DiscountStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style x:Key="DiscountBadge" TargetType="Grid">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsDiscount}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Page.Resources>
 
     <Grid Background="#F1F2F4">
@@ -50,14 +68,15 @@
 
             <!-- 메뉴 리스트 -->
             <Grid Grid.Row="1">
-                <ListBox x:Name="lbMenus" Margin="80,0,180,0" FontSize="20"
+                <ListBox x:Name="lbMenus" Margin="80,0,80,0" FontSize="20"
                          FontWeight="SemiBold" VerticalAlignment="Center" 
                          BorderBrush="Transparent" Background="Transparent"
                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
                          ScrollViewer.HorizontalScrollBarVisibility="Visible"
                          MouseLeftButtonUp="lbMenus_MouseLeftButtonUp"
                          HorizontalContentAlignment="Stretch"
-                         VerticalContentAlignment="Stretch">
+                         VerticalContentAlignment="Stretch"
+                         Width="660">
 
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -68,6 +87,11 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
+                                <Grid Width="60" Height="60" Style="{StaticResource DiscountBadge}">
+                                    <Image Source="/Assets/Icon/Badge.png"/>
+                                    <TextBlock Text="{Binding DiscountRate, StringFormat={}{0}%}" Style="{StaticResource DiscountStyle}"/>
+                                </Grid>
+
                                 <Image Source="{Binding ImagePath}"/>
                                 <TextBlock Text="{Binding Name}" Margin="0,15,0,0" HorizontalAlignment="Center"/>
                                 <TextBlock Text="{Binding Price}" Margin="0,5,0,0" HorizontalAlignment="Center"/>

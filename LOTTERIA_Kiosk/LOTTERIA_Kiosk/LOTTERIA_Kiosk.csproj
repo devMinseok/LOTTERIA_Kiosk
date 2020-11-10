@@ -230,6 +230,7 @@
     <Resource Include="Assets\loading.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Icon\Badge.png" />
     <Content Include="Assets\Lotteria_Movie.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

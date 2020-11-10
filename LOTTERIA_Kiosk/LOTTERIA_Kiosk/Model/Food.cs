@@ -52,5 +52,17 @@ namespace LOTTERIA_Kiosk.Model
         /// 음식 할인율
         /// </summary>
         public int DiscountRate { get; set; }
+
+        public bool IsDiscount
+        {
+            get
+            {
+                return DiscountRate > 0;
+            }
+            set
+            {
+
+            }
+        }
     }
 }

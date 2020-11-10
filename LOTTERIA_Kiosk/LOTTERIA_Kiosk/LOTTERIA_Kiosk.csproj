@@ -68,6 +68,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\MenuCategory.cs" />
+    <Compile Include="Common\MessageType.cs" />
     <Compile Include="DataSource\MenuDataSource.cs" />
     <Compile Include="DataSource\SeatDataSource.cs" />
     <Compile Include="Model\Food.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Model\Seat.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Network\Network.cs" />
+    <Compile Include="Network\RequestMessage.cs" />
     <Compile Include="View\CardPayment.xaml.cs">
       <DependentUpon>CardPayment.xaml</DependentUpon>
     </Compile>

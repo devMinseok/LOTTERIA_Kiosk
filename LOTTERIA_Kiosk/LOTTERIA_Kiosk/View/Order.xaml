@@ -21,7 +21,6 @@
             <Setter Property="FontFamily" Value="Baskerville,Georgia"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
-
     </Page.Resources>
 
     <Grid Background="#F1F2F4">
@@ -40,33 +39,29 @@
 
             <!-- 메뉴 카테고리 -->
             <Grid Grid.Row="0">
-                <ListBox x:Name="lbCategory" Margin="0,0,0,0" BorderBrush="Transparent"  Background="Transparent">
+                <ListBox x:Name="lbMenuCategory" Margin="0,0,0,0" BorderBrush="Transparent"  Background="Transparent">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
-
-                    <ListBoxItem Content="햄버거" Style="{StaticResource CategoryStyle}"/>
-                    <ListBoxItem Content="음료수" Style="{StaticResource CategoryStyle}"/>
-                    <ListBoxItem Content="사이드 메뉴" Style="{StaticResource CategoryStyle}"/>
-                    <ListBoxItem Content="세트 메뉴" Style="{StaticResource CategoryStyle}"/>
-
                 </ListBox>
             </Grid>
 
             <!-- 메뉴 리스트 -->
             <Grid Grid.Row="1">
-                <ListBox x:Name="lbMenus" Margin="70,0,70,0" FontSize="20"
+                <ListBox x:Name="lbMenus" Margin="80,0,180,0" FontSize="20"
                          FontWeight="SemiBold" VerticalAlignment="Center" 
                          BorderBrush="Transparent" Background="Transparent"
                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         MouseLeftButtonUp="lbMenus_MouseLeftButtonUp">
+                         ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                         MouseLeftButtonUp="lbMenus_MouseLeftButtonUp"
+                         HorizontalContentAlignment="Stretch"
+                         VerticalContentAlignment="Stretch">
+
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <!--<WrapPanel />-->
-                            <UniformGrid Columns="3" Rows="3"/>
+                            <UniformGrid Rows="3"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
 
@@ -84,11 +79,11 @@
 
             <Grid Grid.Row="2">
                 <StackPanel Orientation="Horizontal">
-                    <Button Margin="0,0,0,0">
+                    <Button Margin="0,0,0,0" Click="PreviousButton_Click">
                         <Image Source="/Assets/Icon/before.png" Width="100" Height="50"/>
                     </Button>
 
-                    <Button>
+                    <Button Click="NextButton_Click">
                         <Image Source="/Assets/Icon/next.png" Width="100" Height="50"/>
                     </Button>
 

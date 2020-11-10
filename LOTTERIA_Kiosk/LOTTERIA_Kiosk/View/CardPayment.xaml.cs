@@ -38,6 +38,8 @@ namespace LOTTERIA_Kiosk.View
             btn_Pay.Visibility = Visibility.Hidden;
             tbTotalPrice.Text = GetTotalPrice().ToString();
             webcam.QrDecoded += webcam_QrDecoded;
+
+
         }
 
         private void webcam_QrDecoded(object sender, string e) {

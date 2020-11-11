@@ -39,5 +39,10 @@ namespace LOTTERIA_Kiosk
         /// 현재 사용자 데이터
         /// </summary>
         public static User CurrentUser = new User();
+
+        /// <summary>
+        /// 현재 사용자 데이터
+        /// </summary>
+        public static bool isLogin = false;
     }
 }

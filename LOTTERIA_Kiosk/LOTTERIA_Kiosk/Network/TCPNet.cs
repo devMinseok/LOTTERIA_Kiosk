@@ -12,8 +12,6 @@ namespace LOTTERIA_Kiosk.Network
 {
     public class TCPNet
     {
-        // The port number for the remote device.  
-        private const int port = 80;
 
         // ManualResetEvent instances signal completion.  
         private static ManualResetEvent connectDone =
@@ -54,10 +52,6 @@ namespace LOTTERIA_Kiosk.Network
                 Socket client = (Socket)ar.AsyncState;
 
                 client.EndConnect(ar);
-
-                Console.WriteLine("Socket connected to {0}",
-                    client.RemoteEndPoint.ToString());
-
                 connectDone.Set();
             }
             catch (Exception e)

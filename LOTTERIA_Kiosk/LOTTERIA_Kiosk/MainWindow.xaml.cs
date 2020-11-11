@@ -1,4 +1,5 @@
-﻿using LOTTERIA_Kiosk.Properties;
+﻿using LOTTERIA_Kiosk.Network;
+using LOTTERIA_Kiosk.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,11 @@ namespace LOTTERIA_Kiosk
             splashScreen.Show(false);
 
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
+
+            //if (Database().isLogin()) 
+            //{
+
+            //}
         }
 
         private void Timer_tick(object sender, EventArgs e)

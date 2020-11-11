@@ -20,9 +20,31 @@ namespace LOTTERIA_Kiosk.View
     /// </summary>
     public partial class LoginPage : Page
     {
+        Home home = new Home();
         public LoginPage()
         {
             InitializeComponent();
+        }
+
+        private void btn_login_Click(object sender, RoutedEventArgs e)
+        {
+            string idText = tb_Id.Text;
+            if (tb_Pwd.Text == "1234")
+            {
+                if (idText == "2101" || idText == "2105" || idText == "2113")
+                {
+                    NavigationService.Navigate(new Uri("/View/Home.xaml", UriKind.Relative));
+                    App.isLogin = true;
+                }
+                else
+                {
+                    MessageBox.Show("등록되지 않은 유저입니다.", "롯데리아");
+                }
+            }
+            else
+            {
+                MessageBox.Show("비밀번호가 틀렸습니다.", "롯데리아");
+            }
         }
     }
 }

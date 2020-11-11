@@ -89,12 +89,7 @@ namespace LOTTERIA_Kiosk.View
         public void LoadCategoryButton()
         {
             InitializeComponent();
-            Array valArray = typeof(MenuCategory).GetEnumValues();
-            foreach(MenuCategory menuCategory in valArray)
-            {
-                lbMenuCategory.Items.Add(menuCategory);
-            }
-
+            lbMenuCategory.ItemsSource = typeof(MenuCategory).GetEnumValues();
             SetLbMenusItem(MenuCategory.햄버거); // 초기 선택
         }
 

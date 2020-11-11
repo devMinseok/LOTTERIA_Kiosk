@@ -63,6 +63,12 @@
                             <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
+                    
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
 
@@ -76,7 +82,7 @@
                          MouseLeftButtonUp="lbMenus_MouseLeftButtonUp"
                          HorizontalContentAlignment="Stretch"
                          VerticalContentAlignment="Stretch"
-                         Width="660">
+                         Width="800">
 
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -86,16 +92,29 @@
 
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel>
-                                <Grid Width="60" Height="60" Style="{StaticResource DiscountBadge}">
-                                    <Image Source="/Assets/Icon/Badge.png"/>
-                                    <TextBlock Text="{Binding DiscountRate, StringFormat={}{0}%}" Style="{StaticResource DiscountStyle}"/>
+                            <Grid Width="250">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="6*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="2*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <Image Source="{Binding ImagePath}"/>
+                                    <Grid Width="70" Height="70" Style="{StaticResource DiscountBadge}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,30,0">
+                                        <Image Source="/Assets/Icon/Badge.png"/>
+                                        <TextBlock Text="{Binding DiscountRate, StringFormat={}{0}%}" Style="{StaticResource DiscountStyle}"/>
+                                    </Grid>
                                 </Grid>
 
-                                <Image Source="{Binding ImagePath}"/>
-                                <TextBlock Text="{Binding Name}" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-                                <TextBlock Text="{Binding Price}" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-                            </StackPanel>
+                                <Grid Grid.Row="1">
+                                    <TextBlock Text="{Binding Name}" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Row="2">
+                                    <TextBlock Text="{Binding Price, StringFormat={}{0}원}"  HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
@@ -110,7 +129,6 @@
                     <Button Click="NextButton_Click">
                         <Image Source="/Assets/Icon/next.png" Width="100" Height="50"/>
                     </Button>
-
                 </StackPanel>
             </Grid>
         </Grid>

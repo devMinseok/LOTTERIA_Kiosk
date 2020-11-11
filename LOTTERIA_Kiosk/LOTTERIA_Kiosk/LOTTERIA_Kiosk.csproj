@@ -75,8 +75,9 @@
     <Compile Include="Model\OrderInfo.cs" />
     <Compile Include="Model\Seat.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="Network\Network.cs" />
+    <Compile Include="Network\TCPNet.cs" />
     <Compile Include="Network\RequestMessage.cs" />
+    <Compile Include="Network\StateObject.cs" />
     <Compile Include="View\CardPayment.xaml.cs">
       <DependentUpon>CardPayment.xaml</DependentUpon>
     </Compile>

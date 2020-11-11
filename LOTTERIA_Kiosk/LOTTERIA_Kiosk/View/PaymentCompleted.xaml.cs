@@ -33,9 +33,9 @@ namespace LOTTERIA_Kiosk.View
             autoMoveValue.Text = "5";
             StartTimer();
         }
-        private int GetTotalPrice()
+        private double GetTotalPrice()
         {
-            int total = 0;
+            double total = 0;
             foreach (Food food in App.SelectedMenuList)
             {
                 total += food.Count * food.Price;

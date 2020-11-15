@@ -34,8 +34,8 @@ namespace LOTTERIA_Kiosk.View
             this.startMedia.Play();
             this.startMedia.MediaEnded += new RoutedEventHandler(startMedia_MediaEnded);
 
-            tcpnet.StartClient();
-            loginClient();
+            //tcpnet.StartClient();
+            //loginClient();
         }
         private void startMedia_MediaEnded(object sender, RoutedEventArgs e)
         {
@@ -71,7 +71,6 @@ namespace LOTTERIA_Kiosk.View
 
             string json = JsonConvert.SerializeObject(requestJson);
             tcpnet.Send(json);
-            tcpnet.waitForReceive();
         }
     }
 }

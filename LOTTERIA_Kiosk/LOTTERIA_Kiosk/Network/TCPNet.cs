@@ -121,6 +121,8 @@ namespace LOTTERIA_Kiosk.Network
 
             client.BeginSend(byteData, 0, byteData.Length, 0,
                 new AsyncCallback(SendCallback), client);
+
+            waitForReceive();
         }
 
         public void SendCallback(IAsyncResult ar)

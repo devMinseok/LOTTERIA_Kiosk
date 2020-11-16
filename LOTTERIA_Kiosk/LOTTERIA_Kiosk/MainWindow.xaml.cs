@@ -29,6 +29,11 @@ namespace LOTTERIA_Kiosk
             InitializeComponent();
 
             this.Loaded += MainWindow_Loaded;
+
+            if (!App.isLogin)
+            {
+                frame_content.Source = new Uri("/View/LoginPage.xaml", UriKind.Relative);
+            }
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)

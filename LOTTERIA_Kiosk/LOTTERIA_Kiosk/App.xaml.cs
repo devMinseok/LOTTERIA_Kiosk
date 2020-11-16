@@ -1,5 +1,6 @@
 ﻿using LOTTERIA_Kiosk.DataSource;
 using LOTTERIA_Kiosk.Model;
+using LOTTERIA_Kiosk.Network;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -44,5 +45,8 @@ namespace LOTTERIA_Kiosk
         /// 현재 사용자 데이터
         /// </summary>
         public static bool isLogin = false;
+
+        public static TCPNet tcpnet = new TCPNet();
+
     }
 }

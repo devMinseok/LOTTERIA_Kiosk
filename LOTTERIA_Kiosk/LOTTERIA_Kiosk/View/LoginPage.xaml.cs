@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LOTTERIA_Kiosk.Model;
+using LOTTERIA_Kiosk.Network;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +27,7 @@ namespace LOTTERIA_Kiosk.View
         public LoginPage()
         {
             InitializeComponent();
+            App.tcpnet.StartClient();
         }
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
@@ -34,6 +38,8 @@ namespace LOTTERIA_Kiosk.View
                 if (idText == "2101" || idText == "2105" || idText == "2113")
                 {
                     NavigationService.Navigate(new Uri("/View/Home.xaml", UriKind.Relative));
+                    loginClient();
+
                     App.isLogin = true;
                 }
                 else
@@ -45,6 +51,19 @@ namespace LOTTERIA_Kiosk.View
             {
                 MessageBox.Show("비밀번호가 틀렸습니다.", "롯데리아");
             }
+        }
+        private void loginClient()
+        {
+            RequestMessage requestJson = new RequestMessage();
+
+            requestJson.MSGType = 0;
+            requestJson.Id = "2113";
+            requestJson.Content = "로그인";
+            requestJson.ShopName = "";
+            requestJson.OrderNumber = "";
+            requestJson.Menus = null;
+            string json = JsonConvert.SerializeObject(requestJson);
+            App.tcpnet.Send(json);
         }
     }
 }

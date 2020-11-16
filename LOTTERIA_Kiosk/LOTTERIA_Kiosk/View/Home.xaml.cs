@@ -26,7 +26,7 @@ namespace LOTTERIA_Kiosk.View
     /// </summary>
     public partial class Home : Page
     {
-        TCPNet tcpnet = new TCPNet();
+        
         public Home()
         {
             InitializeComponent();
@@ -34,8 +34,6 @@ namespace LOTTERIA_Kiosk.View
             this.startMedia.Play();
             this.startMedia.MediaEnded += new RoutedEventHandler(startMedia_MediaEnded);
 
-            tcpnet.StartClient();
-            loginClient();
         }
         private void startMedia_MediaEnded(object sender, RoutedEventArgs e)
         {
@@ -58,20 +56,6 @@ namespace LOTTERIA_Kiosk.View
             NavigationService.Navigate(new Uri("/View/Manager/Manager.xaml", UriKind.Relative));
         }
 
-        private void loginClient()
-        {
-            RequestMessage requestJson = new RequestMessage();
-
-            requestJson.MSGType = 0;
-            requestJson.Id = "2113";
-            requestJson.Content = "";
-            requestJson.ShopName = "";
-            requestJson.OrderNumber = "";
-            requestJson.Menus = null;
-
-            string json = JsonConvert.SerializeObject(requestJson);
-            tcpnet.Send(json);
-            tcpnet.waitForReceive();
-        }
+        
     }
 }

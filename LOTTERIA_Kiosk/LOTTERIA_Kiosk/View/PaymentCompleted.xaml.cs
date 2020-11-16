@@ -1,4 +1,7 @@
-﻿using LOTTERIA_Kiosk.Model;
+﻿using LOTTERIA_Kiosk.Common;
+using LOTTERIA_Kiosk.Model;
+using LOTTERIA_Kiosk.Network;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,10 +33,12 @@ namespace LOTTERIA_Kiosk.View
             InitializeComponent();
             tbTotalPrice.Text = GetTotalPrice().ToString();
             //text.Text = App.CurrentUser.CashReceiptCard;
-            App.SelectedMenuList.Clear();
             tb_orderNumber.Text = "002";
             autoMoveValue.Text = "5";
             StartTimer();
+            SendRequest();
+            App.SelectedMenuList.Clear();
+            App.FoodData.Load();
         }
         private int GetTotalPrice()
         {
@@ -76,6 +81,32 @@ namespace LOTTERIA_Kiosk.View
             {
                 autoMoveValue.Text = timerValue--.ToString();
             }
+        }
+
+        private void SendRequest()
+        {
+            RequestMessage requestJson = new RequestMessage();
+
+            requestJson.MSGType = MessageType.주문정보;
+            requestJson.Id = "2113";
+            requestJson.Content = "로그인";
+            requestJson.ShopName = "롯데리아";
+            requestJson.OrderNumber = "001";
+
+            foreach (Food food in App.SelectedMenuList)
+            {
+                OrderMenu orderMenu = new OrderMenu
+                {
+                    Name = food.Name,
+                    Price = food.Price / food.Count,
+                    Count = food.Count
+                };
+
+                requestJson.Menus.Add(orderMenu);
+            }
+
+            string json = JsonConvert.SerializeObject(requestJson);
+            App.tcpnet.Send(json);
         }
     }
 }

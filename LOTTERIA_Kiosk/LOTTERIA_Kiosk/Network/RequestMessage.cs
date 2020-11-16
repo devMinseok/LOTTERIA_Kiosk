@@ -15,6 +15,7 @@ namespace LOTTERIA_Kiosk.Network
         public string Content { get; set; }
         public string ShopName { get; set; }
         public string OrderNumber { get; set; }
+        public bool Group { get; set; }
         public List<OrderMenu> Menus = new List<OrderMenu>();
     }
     public class OrderMenu

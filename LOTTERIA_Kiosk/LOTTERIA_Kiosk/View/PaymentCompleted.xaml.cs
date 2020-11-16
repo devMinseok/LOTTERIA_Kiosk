@@ -53,6 +53,7 @@ namespace LOTTERIA_Kiosk.View
 
         private void btn_GoHome_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show(TCPNet.response);
             NavigationService.Navigate(new Uri("/View/Home.xaml", UriKind.Relative));
             TimerClock.Stop();
             
@@ -92,6 +93,7 @@ namespace LOTTERIA_Kiosk.View
             requestJson.Content = "로그인";
             requestJson.ShopName = "롯데리아";
             requestJson.OrderNumber = "001";
+            requestJson.Group = true;
 
             foreach (Food food in App.SelectedMenuList)
             {

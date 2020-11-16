@@ -1,4 +1,5 @@
-﻿using LOTTERIA_Kiosk.Model;
+﻿using LOTTERIA_Kiosk.Common;
+using LOTTERIA_Kiosk.Model;
 using LOTTERIA_Kiosk.Network;
 using Newtonsoft.Json;
 using System;
@@ -56,11 +57,12 @@ namespace LOTTERIA_Kiosk.View
         {
             RequestMessage requestJson = new RequestMessage();
 
-            requestJson.MSGType = 0;
+            requestJson.MSGType = MessageType.로그인;
             requestJson.Id = "2113";
             requestJson.Content = "로그인";
             requestJson.ShopName = "";
             requestJson.OrderNumber = "";
+            requestJson.Group = false;
             requestJson.Menus = null;
             string json = JsonConvert.SerializeObject(requestJson);
             App.tcpnet.Send(json);

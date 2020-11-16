@@ -36,6 +36,8 @@ namespace LOTTERIA_Kiosk.View
 
             //tcpnet.StartClient();
             //loginClient();
+
+            App.tcpnet.Receive();
         }
         private void startMedia_MediaEnded(object sender, RoutedEventArgs e)
         {
@@ -71,7 +73,7 @@ namespace LOTTERIA_Kiosk.View
             requestJson.Menus = null;
 
             string json = JsonConvert.SerializeObject(requestJson);
-            tcpnet.Send(json);
+            App.tcpnet.Send(json);
         }
     }
 }

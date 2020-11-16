@@ -46,6 +46,9 @@ namespace LOTTERIA_Kiosk
         /// </summary>
         public static bool isLogin = false;
 
+        /// <summary>
+        /// TCP/IP 통신
+        /// </summary>
         public static TCPNet tcpnet = new TCPNet();
 
     }

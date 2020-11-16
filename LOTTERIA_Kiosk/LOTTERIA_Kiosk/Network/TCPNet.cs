@@ -22,7 +22,7 @@ namespace LOTTERIA_Kiosk.Network
             new ManualResetEvent(false);
 
         // The response from the remote device.  
-        private static String response = String.Empty;
+        public static String response = String.Empty;
         Socket client = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
 

@@ -24,6 +24,7 @@ namespace LOTTERIA_Kiosk.Network
         // The response from the remote device.  
         public static String response = String.Empty;
         Socket client = new Socket(SocketType.Stream, ProtocolType.Tcp);
+        bool Connected;
 
 
         public void StartClient()
@@ -32,6 +33,7 @@ namespace LOTTERIA_Kiosk.Network
             {
                 client.BeginConnect("10.80.162.152", 80, new AsyncCallback(ConnectCallback), client);
                 connectDone.WaitOne();
+                Connected = true;
             }
             catch (Exception e)
             {
@@ -139,6 +141,23 @@ namespace LOTTERIA_Kiosk.Network
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
+            }
+        }
+        public void ListenReceive()
+        {
+            while (Connected)
+
+            {
+                Thread.Sleep(1);
+
+                //if (stream.CanRead)
+                //{
+                //    string tempStr = Reader.ReadLine();
+                //    if (tempStr.Length > 0)
+                //    {
+
+                //    }
+                //}
             }
         }
     }

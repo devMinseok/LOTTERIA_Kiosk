@@ -96,6 +96,9 @@
     <Compile Include="View\Manager\DateStats.xaml.cs">
       <DependentUpon>DateStats.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\DiscountPage.xaml.cs">
+      <DependentUpon>DiscountPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Manager.xaml.cs">
       <DependentUpon>Manager.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Manager\DateStats.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\DiscountPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

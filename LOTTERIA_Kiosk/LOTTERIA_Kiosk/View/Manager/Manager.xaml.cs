@@ -36,7 +36,7 @@ namespace LOTTERIA_Kiosk.View.Manager
                     break;
 
                 case "btn_Discount":
-                    frame_stats.Source = new Uri("MenuStats.xaml", UriKind.Relative);
+                    frame_stats.Source = new Uri("DiscountPage.xaml", UriKind.Relative);
                     break;
 
                 case "btn_MenuStats":

@@ -36,6 +36,7 @@ namespace LOTTERIA_Kiosk.View
 
         public static int Page = 1;
         public static int Cell = 9;
+        static List<Food> FoodData = App.FoodData.foodList;
 
         private void Order_Loaded(object sender, RoutedEventArgs e)
         {
@@ -61,8 +62,6 @@ namespace LOTTERIA_Kiosk.View
 
             SetLbMenusItem(selectedCategory);
         }
-
-        static List<Food> FoodData = App.FoodData.foodList;
 
         private void SetLbMenusItem(MenuCategory category)
         {
@@ -95,8 +94,12 @@ namespace LOTTERIA_Kiosk.View
 
         public void LoadLbMenus()
         {
-            List<Food> foodList = FoodData.GetRange((Page - 1) * (Cell - 1), Page * (Cell - 1));
-            lbMenus.ItemsSource = foodList;
+            lbMenus.Items.Clear();
+
+            for (int i = (Page - 1) * (Cell - 1); i < Page * Cell; i++)
+            {
+                lbMenus.Items.Add(FoodData[i]);
+            }
         }
 
 
@@ -212,7 +215,7 @@ namespace LOTTERIA_Kiosk.View
 
         private void PreviousButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Page >= 1)
+            if (Page > 1)
             {
                 Page -= 1;
             }

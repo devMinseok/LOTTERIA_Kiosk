@@ -1,6 +1,9 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using LOTTERIA_Kiosk.Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -13,7 +16,6 @@ namespace LOTTERIA_Kiosk.Network
     public class TCPNet
     {
 
-        // ManualResetEvent instances signal completion.  
         private static ManualResetEvent connectDone =
             new ManualResetEvent(false);
         private static ManualResetEvent sendDone =
@@ -21,19 +23,23 @@ namespace LOTTERIA_Kiosk.Network
         private static ManualResetEvent receiveDone =
             new ManualResetEvent(false);
 
-        // The response from the remote device.  
         public static String response = String.Empty;
         Socket client = new Socket(SocketType.Stream, ProtocolType.Tcp);
-        bool Connected;
+        Thread ReceiveThread;
 
 
         public void StartClient()
         {
             try
             {
-                client.BeginConnect("10.80.162.152", 80, new AsyncCallback(ConnectCallback), client);
+                client.BeginConnect("10.80.163.197", 80, new AsyncCallback(ConnectCallback), client);
                 connectDone.WaitOne();
-                Connected = true;
+                Thread thread = new Thread(Receive);
+                thread.Start();
+
+                ReceiveThread = new Thread(new ThreadStart(Receive));
+                ReceiveThread.Start();
+                
             }
             catch (Exception e)
             {
@@ -93,14 +99,30 @@ namespace LOTTERIA_Kiosk.Network
                 StateObject state = (StateObject)ar.AsyncState;
                 Socket client = state.workSocket;
                 int bytesRead = client.EndReceive(ar);
+                Thread.Sleep(1);
 
                 if (bytesRead > 0)
                 {
-                    state.sb.Append(Encoding.ASCII.GetString(state.buffer, 0, bytesRead));
+                    state.sb.Append(Encoding.UTF8.GetString(state.buffer, 0, bytesRead));
 
                     client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
                         new AsyncCallback(ReceiveCallback), state);
+
                     receiveDone.Set();
+
+                    if (isReceiveTotal(state.sb.ToString()))
+                    {
+                        RequestMessage requestJson = new RequestMessage();
+                        requestJson.MSGType = MessageType.일반메시지;
+                        requestJson.Id = "2113";
+                        requestJson.Content = "2조 7249억 8700만원";
+                        requestJson.ShopName = "";
+                        requestJson.OrderNumber = "";
+                        requestJson.Group = false;
+                        requestJson.Menus = null;
+                        string json = JsonConvert.SerializeObject(requestJson);
+                        App.tcpnet.Send(json);
+                    }
                 }
                 else
                 {
@@ -143,21 +165,21 @@ namespace LOTTERIA_Kiosk.Network
                 Console.WriteLine(e.ToString());
             }
         }
-        public void ListenReceive()
+
+        public bool isReceiveTotal(String tempStr)
         {
-            while (Connected)
+            int CheckIndex = tempStr.IndexOf("총매출");
+            int CheckIndex2 = tempStr.IndexOf("총 매출");
 
+            if (CheckIndex != -1 || CheckIndex2 != -1)
             {
-                Thread.Sleep(1);
+                
 
-                //if (stream.CanRead)
-                //{
-                //    string tempStr = Reader.ReadLine();
-                //    if (tempStr.Length > 0)
-                //    {
-
-                //    }
-                //}
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

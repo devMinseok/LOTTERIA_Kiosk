@@ -38,6 +38,8 @@ namespace LOTTERIA_Kiosk
             {
                 frame_content.Source = new Uri("/View/LoginPage.xaml", UriKind.Relative);
             }
+            App.tcpnet.ReceiveThread = new Thread(new ThreadStart(App.tcpnet.Receive));
+            App.tcpnet.ReceiveThread.Start();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -73,9 +75,11 @@ namespace LOTTERIA_Kiosk
                 Group = false,
                 Menus = null
             };
+
             string json = JsonConvert.SerializeObject(requestJson);
             App.tcpnet.Send(json);
         }
+
 
         private void Timer_tick(object sender, EventArgs e)
         {
@@ -109,12 +113,12 @@ namespace LOTTERIA_Kiosk
         private void DevButtonClick(object sender, RoutedEventArgs e)
         {
             Button buttonSender = sender as Button;
-
             switch (buttonSender.Content)
             {
                 case "Home":
                     frame_content.Source = new Uri("/View/Home.xaml", UriKind.Relative);
                     break;
+
                 case "Order":
                     frame_content.Source = new Uri("/View/Order.xaml", UriKind.Relative);
                     break;
@@ -152,6 +156,7 @@ namespace LOTTERIA_Kiosk
             }
 
         }
-
+        
+        
     }
 }

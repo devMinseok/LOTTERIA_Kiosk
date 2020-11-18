@@ -10,6 +10,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace LOTTERIA_Kiosk.Network
 {
@@ -25,7 +26,8 @@ namespace LOTTERIA_Kiosk.Network
 
         public static String response = String.Empty;
         readonly Socket client = new Socket(SocketType.Stream, ProtocolType.Tcp);
-        Thread ReceiveThread;
+
+        public Thread ReceiveThread;
 
 
         public void StartClient()
@@ -37,8 +39,7 @@ namespace LOTTERIA_Kiosk.Network
                 Thread thread = new Thread(Receive);
                 thread.Start();
 
-                ReceiveThread = new Thread(new ThreadStart(Receive));
-                ReceiveThread.Start();
+                
                 
             }
             catch (Exception e)
@@ -99,7 +100,7 @@ namespace LOTTERIA_Kiosk.Network
                 StateObject state = (StateObject)ar.AsyncState;
                 Socket client = state.workSocket;
                 int bytesRead = client.EndReceive(ar);
-                Thread.Sleep(100);
+                Thread.Sleep(1);
 
                 if (bytesRead > 0)
                 {
@@ -110,7 +111,10 @@ namespace LOTTERIA_Kiosk.Network
 
                     receiveDone.Set();
 
-                    if (isReceiveTotal(state.sb.ToString()))
+                    int CheckIndex = state.sb.ToString().IndexOf("총매출");
+                    int CheckIndex2 = state.sb.ToString().IndexOf("총 매출");
+
+                    if (CheckIndex != -1 || CheckIndex2 != -1)
                     {
                         RequestMessage requestJson = new RequestMessage();
                         requestJson.MSGType = MessageType.일반메시지;
@@ -122,6 +126,10 @@ namespace LOTTERIA_Kiosk.Network
                         requestJson.Menus = null;
                         string json = JsonConvert.SerializeObject(requestJson);
                         App.tcpnet.Send(json);
+                    }
+                    else if(state.sb.ToString() != "200")
+                    {
+                        MessageBox.Show(state.sb.ToString());
                     }
                 }
                 else
@@ -163,21 +171,6 @@ namespace LOTTERIA_Kiosk.Network
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
-            }
-        }
-
-        public bool isReceiveTotal(String tempStr)
-        {
-            int CheckIndex = tempStr.IndexOf("총매출");
-            int CheckIndex2 = tempStr.IndexOf("총 매출");
-
-            if (CheckIndex != -1 || CheckIndex2 != -1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
     }

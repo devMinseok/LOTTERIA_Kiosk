@@ -51,5 +51,9 @@ namespace LOTTERIA_Kiosk
         /// </summary>
         public static TCPNet tcpnet = new TCPNet();
 
+        /// <summary>
+        /// 공지사항 데이터
+        /// </summary>
+        public static String Notice = "";
     }
 }

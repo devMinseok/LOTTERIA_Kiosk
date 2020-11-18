@@ -42,7 +42,6 @@ namespace LOTTERIA_Kiosk.View
         {
             LoadCategoryButton();
 
-            LoadLbMenus();
             LoadMenuList();
         }
 
@@ -58,6 +57,7 @@ namespace LOTTERIA_Kiosk.View
 
         private void lbMenuCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            Page = 1;
             MenuCategory selectedCategory = (MenuCategory)lbMenuCategory.SelectedValue;
 
             SetLbMenusItem(selectedCategory);
@@ -96,12 +96,20 @@ namespace LOTTERIA_Kiosk.View
         {
             lbMenus.Items.Clear();
 
-            for (int i = (Page - 1) * (Cell - 1); i < Page * Cell; i++)
+            int start = (Page - 1) * Cell;
+            int end = start + 9;
+
+            for (int i = start; i < end; i++)
             {
-                lbMenus.Items.Add(FoodData[i]);
+                if (i <= FoodData.Count - 1)
+                {
+                    lbMenus.Items.Add(FoodData[i]);
+                } else
+                {
+                    return;
+                }
             }
         }
-
 
     public void LoadMenuList()
         {
@@ -218,19 +226,17 @@ namespace LOTTERIA_Kiosk.View
             if (Page > 1)
             {
                 Page -= 1;
+                LoadLbMenus();
             }
-
-            LoadLbMenus();
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            if (FoodData.Count <= Page * Cell)
+            if (FoodData.Count >= Page * Cell)
             {
                 Page += 1;
+                LoadLbMenus();
             }
-
-            LoadLbMenus();
         }
     }
 }

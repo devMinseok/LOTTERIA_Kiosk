@@ -241,6 +241,10 @@
     <Resource Include="Assets\loading.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Icon\Badge.png" />
+    <Resource Include="Assets\Icon\delete_all.png" />
+    <Resource Include="Assets\Icon\order_cancel.png" />
+    <Resource Include="Assets\Icon\order.png" />
     <Content Include="Assets\Lotteria_Movie.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -81,10 +81,10 @@ namespace LOTTERIA_Kiosk.View
                 Food selectedFood = new Food();
                 selectedFood.Name = food.Name;
                 selectedFood.ImagePath = food.ImagePath;
+                Console.WriteLine(food.Price);
                 selectedFood.Price = food.Price;
                 selectedFood.Category = food.Category;
                 selectedFood.Count = food.Count;
-                selectedFood.DiscountRate = food.DiscountRate;
 
                 App.SelectedMenuList.Add(selectedFood);
             }

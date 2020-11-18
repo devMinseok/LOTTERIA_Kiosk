@@ -53,6 +53,9 @@ namespace LOTTERIA_Kiosk.Model
         /// </summary>
         public int DiscountRate { get; set; }
 
+        /// <summary>
+        /// 할인 여부
+        /// </summary>
         public bool IsDiscount
         {
             get
@@ -64,5 +67,11 @@ namespace LOTTERIA_Kiosk.Model
 
             }
         }
+
+        /// <summary>
+        /// 품절 여부
+        /// </summary>
+        public bool IsSoldOut { get; set; }
+
     }
 }

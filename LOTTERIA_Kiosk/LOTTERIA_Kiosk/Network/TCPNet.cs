@@ -99,7 +99,7 @@ namespace LOTTERIA_Kiosk.Network
                 StateObject state = (StateObject)ar.AsyncState;
                 Socket client = state.workSocket;
                 int bytesRead = client.EndReceive(ar);
-                Thread.Sleep(1);
+                Thread.Sleep(100);
 
                 if (bytesRead > 0)
                 {
@@ -173,8 +173,6 @@ namespace LOTTERIA_Kiosk.Network
 
             if (CheckIndex != -1 || CheckIndex2 != -1)
             {
-                
-
                 return true;
             }
             else

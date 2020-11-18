@@ -1,5 +1,7 @@
-﻿using LOTTERIA_Kiosk.Network;
+﻿using LOTTERIA_Kiosk.Common;
+using LOTTERIA_Kiosk.Network;
 using LOTTERIA_Kiosk.Properties;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +32,8 @@ namespace LOTTERIA_Kiosk
 
             this.Loaded += MainWindow_Loaded;
 
+            App.tcpnet.StartClient();
+
             if (!App.isLogin)
             {
                 frame_content.Source = new Uri("/View/LoginPage.xaml", UriKind.Relative);
@@ -51,10 +55,26 @@ namespace LOTTERIA_Kiosk
 
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
+            loginClient();
             //if (Database().isLogin()) 
             //{
 
             //}
+        }
+        private void loginClient()
+        {
+            RequestMessage requestJson = new RequestMessage
+            {
+                MSGType = MessageType.로그인,
+                Id = "2113",
+                Content = "로그인",
+                ShopName = "",
+                OrderNumber = "",
+                Group = false,
+                Menus = null
+            };
+            string json = JsonConvert.SerializeObject(requestJson);
+            App.tcpnet.Send(json);
         }
 
         private void Timer_tick(object sender, EventArgs e)
@@ -84,13 +104,6 @@ namespace LOTTERIA_Kiosk
                 }
             }
         }
-
-
-
-
-
-
-
 
 
         private void DevButtonClick(object sender, RoutedEventArgs e)

@@ -28,7 +28,6 @@ namespace LOTTERIA_Kiosk.View
         public LoginPage()
         {
             InitializeComponent();
-            App.tcpnet.StartClient();
         }
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
@@ -52,21 +51,6 @@ namespace LOTTERIA_Kiosk.View
             {
                 MessageBox.Show("비밀번호가 틀렸습니다.", "롯데리아");
             }
-        }
-        private void loginClient()
-        {
-            RequestMessage requestJson = new RequestMessage
-            {
-                MSGType = MessageType.로그인,
-                Id = "2113",
-                Content = "로그인",
-                ShopName = "",
-                OrderNumber = "",
-                Group = false,
-                Menus = null
-            };
-            string json = JsonConvert.SerializeObject(requestJson);
-            App.tcpnet.Send(json);
         }
     }
 }

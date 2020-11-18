@@ -93,7 +93,7 @@ namespace LOTTERIA_Kiosk.View
             requestJson.Content = "로그인";
             requestJson.ShopName = "롯데리아";
             requestJson.OrderNumber = "001";
-            requestJson.Group = true;
+            requestJson.Group = false;
 
             foreach (Food food in App.SelectedMenuList)
             {

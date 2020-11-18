@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +23,7 @@ namespace LOTTERIA_Kiosk.View.Manager
     /// </summary>
     public partial class DiscountPage : Page
     {
+        Food selectedFood = new Food();
         public DiscountPage()
         {
             InitializeComponent();
@@ -57,12 +59,26 @@ namespace LOTTERIA_Kiosk.View.Manager
         }
         private void lbMenus_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Food food = lbMenus.SelectedItem as Food;
+            selectedFood = lbMenus.SelectedItem as Food;
 
-            if (food != null)
+            if (selectedFood != null)
             {
-                MessageBox.Show(food.Name);
+                SelectedImage.DataContext = selectedFood;
+                SelectedText.DataContext = selectedFood;
+                SelectedPrice.DataContext = selectedFood;
+                SelectedDiscount.DataContext = selectedFood;
             }
+        }
+
+        private void SelectedDiscount_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void btn_applyDiscount_Click(object sender, RoutedEventArgs e)
+        {
+            selectedFood.DiscountRate = int.Parse(SelectedDiscount.Text);
         }
     }
 }

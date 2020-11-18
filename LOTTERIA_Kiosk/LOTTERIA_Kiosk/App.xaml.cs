@@ -44,7 +44,7 @@ namespace LOTTERIA_Kiosk
         /// <summary>
         /// 현재 사용자 데이터
         /// </summary>
-        public static bool isLogin = false;
+        public static bool isLogin = true;
 
         /// <summary>
         /// TCP/IP 통신

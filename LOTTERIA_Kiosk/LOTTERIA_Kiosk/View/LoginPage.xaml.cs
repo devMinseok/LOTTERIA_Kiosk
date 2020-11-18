@@ -39,7 +39,7 @@ namespace LOTTERIA_Kiosk.View
                 if (idText == "2101" || idText == "2105" || idText == "2113")
                 {
                     NavigationService.Navigate(new Uri("/View/Home.xaml", UriKind.Relative));
-                    loginClient();
+                    //loginClient();
 
                     App.isLogin = true;
                 }
@@ -55,15 +55,16 @@ namespace LOTTERIA_Kiosk.View
         }
         private void loginClient()
         {
-            RequestMessage requestJson = new RequestMessage();
-
-            requestJson.MSGType = MessageType.로그인;
-            requestJson.Id = "2113";
-            requestJson.Content = "로그인";
-            requestJson.ShopName = "";
-            requestJson.OrderNumber = "";
-            requestJson.Group = false;
-            requestJson.Menus = null;
+            RequestMessage requestJson = new RequestMessage
+            {
+                MSGType = MessageType.로그인,
+                Id = "2113",
+                Content = "로그인",
+                ShopName = "",
+                OrderNumber = "",
+                Group = false,
+                Menus = null
+            };
             string json = JsonConvert.SerializeObject(requestJson);
             App.tcpnet.Send(json);
         }

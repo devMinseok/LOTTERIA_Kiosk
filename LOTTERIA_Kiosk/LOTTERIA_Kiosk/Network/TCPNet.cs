@@ -24,7 +24,7 @@ namespace LOTTERIA_Kiosk.Network
             new ManualResetEvent(false);
 
         public static String response = String.Empty;
-        Socket client = new Socket(SocketType.Stream, ProtocolType.Tcp);
+        readonly Socket client = new Socket(SocketType.Stream, ProtocolType.Tcp);
         Thread ReceiveThread;
 
 
@@ -32,7 +32,7 @@ namespace LOTTERIA_Kiosk.Network
         {
             try
             {
-                client.BeginConnect("10.80.163.197", 80, new AsyncCallback(ConnectCallback), client);
+                client.BeginConnect("10.80.162.152", 80, new AsyncCallback(ConnectCallback), client);
                 connectDone.WaitOne();
                 Thread thread = new Thread(Receive);
                 thread.Start();

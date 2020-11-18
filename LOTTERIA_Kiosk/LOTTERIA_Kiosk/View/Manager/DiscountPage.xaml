@@ -20,6 +20,7 @@
                 <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
+                
                 <ListBox x:Name="lbMenuCategory"
                          Margin="0,0,0,0"
                          BorderBrush="Transparent"
@@ -80,6 +81,48 @@
                        FontSize="24" />
             <TextBlock Text=""
                        Name="tb_menuName" />
+            <StackPanel VerticalAlignment="Top"
+                        Orientation="Vertical"
+                        Margin="0 200 0 0">
+                <Image Name="SelectedImage"
+                       Width="250"
+                       Source="{Binding ImagePath}" />
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="0 50 0 0">
+                    <TextBlock Text="메뉴명 : " />
+                    <TextBlock Name="SelectedText"
+                               Text="{Binding Name}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="0 20 0 0">
+                    <TextBlock Text="현재 가격 : " />
+
+                    <TextBlock Name="SelectedPrice"
+                               Text="{Binding Price}" />
+                    <TextBlock Text="원" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="0 20 0 0">
+                    <TextBlock Text="현재 할인율 : " />
+                    <TextBox Name="SelectedDiscount"
+                             TextAlignment="Center"
+                             MaxLength="3"
+                             PreviewTextInput="SelectedDiscount_PreviewTextInput"
+                             Width="30"
+                             Text="{Binding DiscountRate}"/>
+                    <TextBlock Text="%" />
+                </StackPanel>
+
+                <Button Content="적용하기"
+                        Margin="30"
+                        Name="btn_applyDiscount"
+                        Click="btn_applyDiscount_Click"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

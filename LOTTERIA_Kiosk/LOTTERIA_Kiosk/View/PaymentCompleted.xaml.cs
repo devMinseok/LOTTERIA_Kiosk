@@ -100,7 +100,7 @@ namespace LOTTERIA_Kiosk.View
                 OrderMenu orderMenu = new OrderMenu
                 {
                     Name = food.Name,
-                    Price = food.Price / food.Count,
+                    Price = (int)food.Price / food.Count,
                     Count = food.Count
                 };
 

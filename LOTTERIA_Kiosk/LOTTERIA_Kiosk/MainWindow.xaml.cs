@@ -113,10 +113,7 @@ namespace LOTTERIA_Kiosk
             switch (buttonSender.Content)
             {
                 case "Home":
-                    while(frame_content.CanGoBack == true)
-                    {
-                        frame_content.GoBack();
-                    }
+                    frame_content.Source = new Uri("/View/Home.xaml", UriKind.Relative);
                     break;
                 case "Order":
                     frame_content.Source = new Uri("/View/Order.xaml", UriKind.Relative);

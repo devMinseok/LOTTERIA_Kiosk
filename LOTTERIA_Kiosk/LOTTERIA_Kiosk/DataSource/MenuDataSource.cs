@@ -24,7 +24,7 @@ namespace LOTTERIA_Kiosk.DataSource
             foodList = new List<Food>()
             {
                 // 햄버거
-                new Food() { Category = MenuCategory.햄버거, Name = "AZ버거", Price = 6600, ImagePath = @"/Assets/Menu/Hamburger/AZ버거.jpg", Count = 1, DiscountRate = 0 },
+                new Food() { Category = MenuCategory.햄버거, Name = "AZ버거", Price = 6600, ImagePath = @"/Assets/Menu/Hamburger/AZ버거.jpg", Count = 1, DiscountRate = 0},
                 new Food() { Category = MenuCategory.햄버거, Name = "T-Rex", Price = 3700, ImagePath = @"/Assets/Menu/Hamburger/T-Rex.jpg", Count = 1, DiscountRate = 0 },
                 new Food() { Category = MenuCategory.햄버거, Name = "더블X2", Price =  5500, ImagePath = @"/Assets/Menu/Hamburger/더블X2.jpg", Count = 1, DiscountRate = 0 },
                 new Food() { Category = MenuCategory.햄버거, Name = "데리버거", Price = 2500, ImagePath = @"/Assets/Menu/Hamburger/데리버거.jpg", Count = 1, DiscountRate = 0 },

@@ -34,11 +34,14 @@ namespace LOTTERIA_Kiosk.View
             lbMenuCategory.AddHandler(MouseLeftButtonDownEvent, new MouseButtonEventHandler(lbMenuCategory_MouseLeftButtonDown), true);
         }
 
+        public static int Page = 1;
+        public static int Cell = 9;
+        static List<Food> FoodData = App.FoodData.foodList;
+
         private void Order_Loaded(object sender, RoutedEventArgs e)
         {
-            lbMenus.ItemsSource = App.FoodData.foodList;
-
             LoadCategoryButton();
+
             LoadMenuList();
         }
 
@@ -54,6 +57,7 @@ namespace LOTTERIA_Kiosk.View
 
         private void lbMenuCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            Page = 1;
             MenuCategory selectedCategory = (MenuCategory)lbMenuCategory.SelectedValue;
 
             SetLbMenusItem(selectedCategory);
@@ -61,7 +65,8 @@ namespace LOTTERIA_Kiosk.View
 
         private void SetLbMenusItem(MenuCategory category)
         {
-            lbMenus.ItemsSource = App.FoodData.foodList.FindAll(x => x.Category == category);
+            FoodData = App.FoodData.foodList.FindAll(x => x.Category == category);
+            LoadLbMenus();
             LoadMenuList();
         }
 
@@ -73,13 +78,40 @@ namespace LOTTERIA_Kiosk.View
             }
             else
             {
-                App.SelectedMenuList.Add(food);
+                Food selectedFood = new Food();
+                selectedFood.Name = food.Name;
+                selectedFood.ImagePath = food.ImagePath;
+                selectedFood.Price = food.Price;
+                selectedFood.Category = food.Category;
+                selectedFood.Count = food.Count;
+                selectedFood.DiscountRate = food.DiscountRate;
+
+                App.SelectedMenuList.Add(selectedFood);
             }
 
             LoadMenuList();
         }
 
-        public void LoadMenuList()
+        public void LoadLbMenus()
+        {
+            lbMenus.Items.Clear();
+
+            int start = (Page - 1) * Cell;
+            int end = start + 9;
+
+            for (int i = start; i < end; i++)
+            {
+                if (i <= FoodData.Count - 1)
+                {
+                    lbMenus.Items.Add(FoodData[i]);
+                } else
+                {
+                    return;
+                }
+            }
+        }
+
+    public void LoadMenuList()
         {
             lvOrderList.ItemsSource = App.SelectedMenuList;
             lvOrderList.Items.Refresh();
@@ -89,12 +121,7 @@ namespace LOTTERIA_Kiosk.View
         public void LoadCategoryButton()
         {
             InitializeComponent();
-            Array valArray = typeof(MenuCategory).GetEnumValues();
-            foreach(MenuCategory menuCategory in valArray)
-            {
-                lbMenuCategory.Items.Add(menuCategory);
-            }
-
+            lbMenuCategory.ItemsSource = typeof(MenuCategory).GetEnumValues();
             SetLbMenusItem(MenuCategory.햄버거); // 초기 선택
         }
 
@@ -134,7 +161,7 @@ namespace LOTTERIA_Kiosk.View
         private void PlusFoodCount(object sender, RoutedEventArgs e)
         {
             Food food = ListView_GetItem(e);
-            food.Count = food.Count + 1;
+            food.Count += 1;
             LoadMenuList();
         }
 
@@ -194,38 +221,22 @@ namespace LOTTERIA_Kiosk.View
             }
         }
 
-        int index = 0;
-
         private void PreviousButton_Click(object sender, RoutedEventArgs e)
         {
-            if (lbMenus.Items.Count == 0)
+            if (Page > 1)
             {
-                return;
+                Page -= 1;
+                LoadLbMenus();
             }
-
-            index -= 5;
-
-            int rowIndex = Math.Min(Math.Max(0, index), lbMenus.Items.Count - 1);
-
-            lbMenus.SelectedIndex = rowIndex;
-            lbMenus.ScrollIntoView(lbMenus.SelectedItem);
-            lbMenus.SelectedIndex = -1;
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            if (lbMenus.Items.Count == 0)
+            if (FoodData.Count >= Page * Cell)
             {
-                return;
+                Page += 1;
+                LoadLbMenus();
             }
-
-            index += 5;
-
-            int rowIndex = Math.Min(Math.Max(0, index), lbMenus.Items.Count - 1);
-
-            lbMenus.SelectedIndex = rowIndex;
-            lbMenus.ScrollIntoView(lbMenus.SelectedItem);
-            lbMenus.SelectedIndex = -1;
         }
     }
 }

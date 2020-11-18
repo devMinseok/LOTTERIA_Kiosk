@@ -21,6 +21,29 @@
             <Setter Property="FontFamily" Value="Baskerville,Georgia"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
+
+        <Style x:Key="DiscountStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style x:Key="DiscountBadge" TargetType="Grid">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsDiscount}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="TextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
     </Page.Resources>
 
     <Grid Background="#F1F2F4">
@@ -45,49 +68,73 @@
                             <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
+                    
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
 
             <!-- 메뉴 리스트 -->
             <Grid Grid.Row="1">
-                <ListBox x:Name="lbMenus" Margin="80,0,180,0" FontSize="20"
+                <ListBox x:Name="lbMenus" Margin="80,0,80,0" FontSize="20"
                          FontWeight="SemiBold" VerticalAlignment="Center" 
                          BorderBrush="Transparent" Background="Transparent"
                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
                          ScrollViewer.HorizontalScrollBarVisibility="Visible"
                          MouseLeftButtonUp="lbMenus_MouseLeftButtonUp"
                          HorizontalContentAlignment="Stretch"
-                         VerticalContentAlignment="Stretch">
+                         VerticalContentAlignment="Stretch"
+                         Width="800">
 
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Rows="3"/>
+                            <UniformGrid Rows="3" Columns="3"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
 
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel>
-                                <Image Source="{Binding ImagePath}"/>
-                                <TextBlock Text="{Binding Name}" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-                                <TextBlock Text="{Binding Price}" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-                            </StackPanel>
+                            <Grid Width="250">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="6*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="2*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <Image Source="{Binding ImagePath}"/>
+                                    <Grid Width="70" Height="70" Style="{StaticResource DiscountBadge}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,30,0">
+                                        <Image Source="/Assets/Icon/Badge.png"/>
+                                        <TextBlock Text="{Binding DiscountRate, StringFormat={}{0}%}" Style="{StaticResource DiscountStyle}"/>
+                                    </Grid>
+                                </Grid>
+
+                                <Grid Grid.Row="1">
+                                    <TextBlock Text="{Binding Name}" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Row="2">
+                                    <TextBlock Text="{Binding Price, StringFormat={}{0}원}"  HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
 
             <Grid Grid.Row="2">
-                <StackPanel Orientation="Horizontal">
-                    <Button Margin="0,0,0,0" Click="PreviousButton_Click">
-                        <Image Source="/Assets/Icon/before.png" Width="100" Height="50"/>
+                <Grid Margin="100,0,100,0">
+                    <Button Margin="0,0,0,0" Click="PreviousButton_Click" HorizontalAlignment="Left">
+                        <Image Source="/Assets/Icon/before.png" Width="200" Height="100"/>
                     </Button>
 
-                    <Button Click="NextButton_Click">
-                        <Image Source="/Assets/Icon/next.png" Width="100" Height="50"/>
+                    <Button Click="NextButton_Click" HorizontalAlignment="Right">
+                        <Image Source="/Assets/Icon/next.png" Width="200" Height="100"/>
                     </Button>
-
-                </StackPanel>
+                </Grid>
             </Grid>
         </Grid>
 
@@ -136,25 +183,24 @@
             <Grid Grid.Row="1">
                 <StackPanel HorizontalAlignment="Right">
                     <Button Click="OrderReset">
-                        <Image Source="/Assets/Icon/next.png" Width="100" Height="40"/>
+                        <Image Source="/Assets/Icon/delete_all.png" Width="200" Height="100"/>
                     </Button>
 
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="총 주문 금액: " FontSize="14" Foreground="Black"/>
-                        <TextBlock Text="0" Margin="10, 0, 0, 0" x:Name="tbTotalPrice" FontSize="14" Foreground="Black"/>
-                        <TextBlock Text="원" FontSize="14" Foreground="Black"/>
+                        <TextBlock Text="총 주문 금액: " Style="{StaticResource TextStyle}"/>
+                        <TextBlock Text="0" Margin="10,0,0,0" x:Name="tbTotalPrice" Style="{StaticResource TextStyle}"/>
+                        <TextBlock Text="원" Style="{StaticResource TextStyle}"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
-
             <Grid Grid.Row="2">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                     <Button Click="OrderCancel">
-                        <Image Source="/Assets/Icon/next.png" Width="100" Height="40"/>
+                        <Image Source="/Assets/Icon/order_cancel.png" Width="200" Height="100"/>
                     </Button>
 
                     <Button Click="OrderNext">
-                        <Image Source="/Assets/Icon/next.png" Width="100" Height="40"/>
+                        <Image Source="/Assets/Icon/order.png" Width="200" Height="100"/>
                     </Button>
                 </StackPanel>
                 

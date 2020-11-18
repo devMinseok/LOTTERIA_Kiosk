@@ -18,13 +18,13 @@ namespace LOTTERIA_Kiosk.Model
         /// 음식 가격
         /// 할인율, 갯수를 반영한 값을 반환
         /// </summary>
-        private int price;
-        public int Price {
+        private double price;
+        public double Price {
             get
             {
-                int discountRateDecimal = DiscountRate / 100;
-                int value = price * discountRateDecimal;
-                int result = price - value;
+                double discountRateDecimal = (double)DiscountRate / 100;
+                double value = price * discountRateDecimal;
+                double result = price - value;
                 return result * Count;
             }
             set
@@ -52,5 +52,17 @@ namespace LOTTERIA_Kiosk.Model
         /// 음식 할인율
         /// </summary>
         public int DiscountRate { get; set; }
+
+        public bool IsDiscount
+        {
+            get
+            {
+                return DiscountRate > 0;
+            }
+            set
+            {
+
+            }
+        }
     }
 }

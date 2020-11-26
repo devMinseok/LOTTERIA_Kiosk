@@ -61,7 +61,7 @@
 
             <TextBlock x:Name="Text" Height="90" Width="350" TextAlignment="Center"
                      VerticalAlignment="Bottom" HorizontalAlignment="Center" TextWrapping="Wrap" >
-                <Span FontSize="17"><Span Foreground="#C63636"> <Bold>롯데리아</Bold></Span>를 방문해 주셔서 감사합니다.
+                <Span FontSize="17">환영합니다. <Span Foreground="#C63636">  <Bold>롯데리아</Bold></Span>입니다.
                 <LineBreak/>
                 주문을 원하시면 주문하기 버튼을 눌러주세요
                 </Span>

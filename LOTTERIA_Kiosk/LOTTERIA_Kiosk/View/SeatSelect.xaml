@@ -3,10 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:LOTTERIA_Kiosk.View"
+      xmlns:local="clr-namespace:LOTTERIA_Kiosk.View" 
+      xmlns:converter="clr-namespace:LOTTERIA_Kiosk.View"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="SeatSelect">
+
+    <Page.Resources>
+        <converter:BackgroundConverter x:Key="BackgroundConverter" />
+    </Page.Resources>
 
     <Grid Background="#FFFFFF">
 
@@ -19,80 +24,49 @@
         <Grid Grid.Row="0">
             <TextBlock x:Name="Seat" Height="40" Width="330" TextAlignment="Center"
                      VerticalAlignment="Center" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" >
-                <Span FontSize="25">식사 장소를 선택해 주세요  </Span>
+                <Span FontSize="25">좌석을 선택해 주세요  </Span>
             </TextBlock>
         </Grid>
 
         <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="5*"/>
-            </Grid.RowDefinitions>
+            <ListView x:Name="lvTable" Margin="5"
+                  SelectionChanged="lvTableList_SelectionChanged"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      Width="670"
+                      Height="382">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="5*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Row="0" Grid.Column="0">
-                <Button x:Name="One" Click="Click_Seat" Content="1" Background="White" HorizontalAlignment="Center" Margin="0 0 20 20"
-                         BorderThickness="2" FontSize="50" Width="640" />
-            </Grid>
-
-            <Grid Grid.Row="0" Grid.Column="1">
-                <Button  x:Name="Two" Click="Click_Seat"  Content="2" Background="White" HorizontalAlignment="Center" Margin="20 0 20 20"
-                        BorderThickness="2" FontSize="50" Width="640" BorderBrush="Black"/>
-            </Grid>
-
-            <Grid Grid.Row="0" Grid.Column="2">
-                <Button  x:Name="Three" Click="Click_Seat" Content="3" Background="White" HorizontalAlignment="Center" Margin="20 0 0 20"
-                        BorderThickness="2" FontSize="50" Width="640" BorderBrush="Black"/>
-            </Grid> 
-
-            <Grid Grid.Row="1" Grid.Column="0">
-                <Button  x:Name="Four" Click="Click_Seat" Content="4" Background="White" HorizontalAlignment="Center" Margin="0 0 20 20"
-                        BorderThickness="2" FontSize="50" Width="640" BorderBrush="Black"/>
-            </Grid>
-
-            <Grid Grid.Row="1" Grid.Column="1">
-                <Button  x:Name="Five" Click="Click_Seat" Content="5" Background="White" HorizontalAlignment="Center" Margin="20 0 20 20"
-                        BorderThickness="2" FontSize="50" Width="640" BorderBrush="Black"/>
-            </Grid>
-
-            <Grid Grid.Row="1" Grid.Column="2">
-                <Button  x:Name="Six" Click="Click_Seat" Content="6" Background="White" HorizontalAlignment="Center"  Margin="20 0 0 20"
-                        BorderThickness="2" FontSize="50" Width="640" BorderBrush="Black"/>
-            </Grid>
-
-            <Grid Grid.Row="2" Grid.Column="0">
-                <Button  x:Name="Seven" Click="Click_Seat" Content="7" Background="White" HorizontalAlignment="Center" Margin="0 0 20 20"
-                        BorderThickness="2" FontSize="50" Width="640" BorderBrush="Black"/>
-            </Grid>
-
-            <Grid Grid.Row="2" Grid.Column="1">
-                <Button  x:Name="Eight" Click="Click_Seat" Content="8" Background="White" HorizontalAlignment="Center" Margin="20 0 20 20"
-                        BorderThickness="2" FontSize="50" Width="640" BorderBrush="Black"/>
-            </Grid>
-
-            <Grid Grid.Row="2" Grid.Column="2">
-                <Button  x:Name="Nine" Click="Click_Seat" Content="9" Background="White" HorizontalAlignment="Center"  Margin="20 0 0 20"
-                        BorderThickness="2" FontSize="50" Width="640" BorderBrush="Black" />
-            </Grid>
-
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Border BorderBrush="Red" BorderThickness="1" Margin="5">
+                                <TextBlock TextAlignment="Center"
+                                       Height="110" Width="200"
+                                       Text="{Binding Number, StringFormat={}{0}번 테이블}" 
+                                        Background="{Binding IsUsed, Converter={StaticResource BackgroundConverter}}"/>
+                                
+                            </Border>
+                            
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
 
 
-        <Button  Grid.Row="2"  
-                Click="Before_Click" Background="White" BorderThickness="0"
-                HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="40 0 0 52">
+        <Button  Grid.Row="2" 
+                Background="White" BorderThickness="0"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="40 0 0 52" Click="Before_Click">
             <Image Source="/Assets/Icon/before.png" Height="80" Width="150"/>
         </Button>
 
         <Button  Grid.Row="2"
-                Click="Next_Click" Background="White" BorderThickness="0"
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 40 52">
+                 Background="White" BorderThickness="0"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 40 52" Click="Next_Click">
             <Image Source="/Assets/Icon/next.png" Height="80" Width="150"/>
         </Button>
 

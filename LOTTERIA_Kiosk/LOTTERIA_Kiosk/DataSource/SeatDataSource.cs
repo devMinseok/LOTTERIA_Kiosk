@@ -24,7 +24,7 @@ namespace LOTTERIA_Kiosk.DataSource
             for (int i = 0; i < NUMBER_OF_TABLE; i++)
             {
                 Seat seat = new Seat();
-                seat.Number = i;
+                seat.Number = i+1;
                 seat.IsUsed = false;
 
                 listSeat.Add(seat);

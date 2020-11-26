@@ -75,6 +75,8 @@
     <Compile Include="Model\OrderInfo.cs" />
     <Compile Include="Model\Seat.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Network\Network.cs" />
+    <Compile Include="View\BackgroundConverter.cs" />
     <Compile Include="Network\TCPNet.cs" />
     <Compile Include="Network\RequestMessage.cs" />
     <Compile Include="Network\StateObject.cs" />
@@ -236,11 +238,11 @@
     <Resource Include="Assets\Icon\circular.png" />
     <Resource Include="Assets\Icon\manager.png" />
     <Resource Include="Assets\Icon\next.png" />
-    <Resource Include="Assets\Icon\pack.png" />
-    <Resource Include="Assets\Icon\store.png" />
     <Resource Include="Assets\loading.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Icon\pack.png" />
+    <Resource Include="Assets\Icon\store.png" />
     <Resource Include="Assets\Icon\discountBadge.png" />
     <Resource Include="Assets\Icon\delete_all.png" />
     <Resource Include="Assets\Icon\order_cancel.png" />

@@ -53,10 +53,8 @@ namespace LOTTERIA_Kiosk.View
 
         private void btn_GoHome_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(TCPNet.response);
             NavigationService.Navigate(new Uri("/View/Home.xaml", UriKind.Relative));
             TimerClock.Stop();
-            
         }
 
         private void StartTimer()

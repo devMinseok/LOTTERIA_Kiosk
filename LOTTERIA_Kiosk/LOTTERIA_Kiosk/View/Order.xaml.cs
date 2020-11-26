@@ -2,7 +2,11 @@
 using LOTTERIA_Kiosk.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,26 +31,43 @@ namespace LOTTERIA_Kiosk.View
             InitializeComponent();
 
             Loaded += Order_Loaded;
+            lbMenuCategory.AddHandler(MouseLeftButtonDownEvent, new MouseButtonEventHandler(lbMenuCategory_MouseLeftButtonDown), true);
         }
+
+        public static int Page = 1;
+        public static int Cell = 9;
+        static List<Food> FoodData = App.FoodData.foodList;
 
         private void Order_Loaded(object sender, RoutedEventArgs e)
         {
-            App.FoodData.Load();
-            App.SeatData.Load();
+            LoadCategoryButton();
 
-            lbMenus.ItemsSource = App.FoodData.foodList;
-        }
-
-        private void SetLvFoodItem(MenuCategory category)
-        {
-            lbMenus.ItemsSource = App.FoodData.foodList.FindAll(x => x.Category == category);
+            LoadMenuList();
         }
 
         private void lbMenus_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Food food = lbMenus.SelectedItem as Food;
             
-            AddSelectedMenu(food);
+            if (food != null) {
+                AddSelectedMenu(food);
+                lbMenus.SelectedIndex = -1;
+            }
+        }
+
+        private void lbMenuCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Page = 1;
+            MenuCategory selectedCategory = (MenuCategory)lbMenuCategory.SelectedValue;
+
+            SetLbMenusItem(selectedCategory);
+        }
+
+        private void SetLbMenusItem(MenuCategory category)
+        {
+            FoodData = App.FoodData.foodList.FindAll(x => x.Category == category);
+            LoadLbMenus();
+            LoadMenuList();
         }
 
         public void AddSelectedMenu(Food food)
@@ -57,18 +78,51 @@ namespace LOTTERIA_Kiosk.View
             }
             else
             {
-                food.Count = 1;
-                App.SelectedMenuList.Add(food);
+                Food selectedFood = new Food();
+                selectedFood.Name = food.Name;
+                selectedFood.ImagePath = food.ImagePath;
+                Console.WriteLine(food.Price);
+                selectedFood.Price = food.Price;
+                selectedFood.Category = food.Category;
+                selectedFood.Count = food.Count;
+
+                App.SelectedMenuList.Add(selectedFood);
             }
 
             LoadMenuList();
         }
 
-        public void LoadMenuList()
+        public void LoadLbMenus()
+        {
+            lbMenus.Items.Clear();
+
+            int start = (Page - 1) * Cell;
+            int end = start + 9;
+
+            for (int i = start; i < end; i++)
+            {
+                if (i <= FoodData.Count - 1)
+                {
+                    lbMenus.Items.Add(FoodData[i]);
+                } else
+                {
+                    return;
+                }
+            }
+        }
+
+    public void LoadMenuList()
         {
             lvOrderList.ItemsSource = App.SelectedMenuList;
             lvOrderList.Items.Refresh();
             tbTotalPrice.Text = GetTotalPrice().ToString();
+        }
+
+        public void LoadCategoryButton()
+        {
+            InitializeComponent();
+            lbMenuCategory.ItemsSource = typeof(MenuCategory).GetEnumValues();
+            SetLbMenusItem(MenuCategory.햄버거); // 초기 선택
         }
 
         private static Food ListView_GetItem(RoutedEventArgs e)
@@ -93,14 +147,12 @@ namespace LOTTERIA_Kiosk.View
         private void MinusMenuCount(object sender, RoutedEventArgs e)
         {
             Food food = ListView_GetItem(e);
-            food.Count = food.Count - 1;
+            food.Count -= 1;
 
             if (food.Count < 1)
             {
-                if (App.SelectedMenuList.Exists(x => x.Name == food.Name))
-                {
-                    App.SelectedMenuList.Remove(food);
-                }
+                App.SelectedMenuList.Remove(food);
+                food.Count = 1;
             }
 
             LoadMenuList();
@@ -109,19 +161,21 @@ namespace LOTTERIA_Kiosk.View
         private void PlusFoodCount(object sender, RoutedEventArgs e)
         {
             Food food = ListView_GetItem(e);
-            food.Count = food.Count + 1;
+            food.Count += 1;
             LoadMenuList();
         }
-        private int GetTotalPrice()
+
+        private double GetTotalPrice()
         {
-            int total = 0;
+            double total = 0;
             foreach (Food food in App.SelectedMenuList)
             {
-                total += food.Count * food.Price;
+                total += food.Price;
             }
 
             return total;
         }
+
         private void OrderReset(object sender, RoutedEventArgs e)
         {
             if (App.SelectedMenuList.Count < 1)
@@ -158,9 +212,31 @@ namespace LOTTERIA_Kiosk.View
 
         private void OrderNext(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/MealPlaceSelect.xaml", UriKind.Relative));
+            if (App.SelectedMenuList.Count == 0)
+            {
+                MessageBox.Show("먼저 메뉴를 선택해주세요.", "롯데리아");
+            } else
+            {
+                NavigationService.Navigate(new Uri("/View/MealPlaceSelect.xaml", UriKind.Relative));
+            }
         }
 
+        private void PreviousButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Page > 1)
+            {
+                Page -= 1;
+                LoadLbMenus();
+            }
+        }
 
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (FoodData.Count >= Page * Cell)
+            {
+                Page += 1;
+                LoadLbMenus();
+            }
+        }
     }
 }

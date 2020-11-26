@@ -22,16 +22,19 @@ namespace LOTTERIA_Kiosk.View
     /// </summary>
     public partial class CashPayment : Page
     {
-        String a = "02345673";
+        List<string> barcodeValList = new List<string>();
         public CashPayment()
         {
             InitializeComponent();
+            barcodeValList.Add("2112345678900");
+            barcodeValList.Add("02345673");
+            barcodeValList.Add("9790260532113");
             barcode_text.Focus();
             tbTotalPrice.Text = GetTotalPrice().ToString();
         }
-        private int GetTotalPrice()
+        private double GetTotalPrice()
         {
-            int total = 0;
+            double total = 0;
             foreach (Food food in App.SelectedMenuList)
             {
                 total += food.Count * food.Price;
@@ -48,12 +51,21 @@ namespace LOTTERIA_Kiosk.View
             }
         }
 
-        private void barcode_text_TextChanged(object sender, TextChangedEventArgs e)
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
-            if (a == barcode_text.Text)
+            if (e.Key == Key.Return)
             {
-                App.CurrentUser.CashReceiptCard = barcode_text.Text;
-                NavigationService.Navigate(new Uri("/View/PaymentCompleted.xaml", UriKind.Relative));
+                foreach (string i in barcodeValList)
+                {
+                    if (i == barcode_text.Text)
+                    {
+                        App.CurrentUser.CashReceiptCard = barcode_text.Text;
+                        NavigationService.Navigate(new Uri("/View/PaymentCompleted.xaml", UriKind.Relative));
+                    }
+                    else
+                    {
+                    }
+                }
             }
         }
     }

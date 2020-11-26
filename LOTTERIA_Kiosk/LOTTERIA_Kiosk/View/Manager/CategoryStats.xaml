@@ -24,7 +24,7 @@
                                    DataLabels="True"
                                     />
                     <lvc:PieSeries Title="치킨"
-                                   Values="4"
+                                   Values="1"
                                    DataLabels="True"
                                     />
                     <lvc:PieSeries Title="디저트"

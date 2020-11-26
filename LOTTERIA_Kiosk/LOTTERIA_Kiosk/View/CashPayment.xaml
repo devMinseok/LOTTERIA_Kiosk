@@ -35,9 +35,9 @@
             <TextBox 
                 x:Name="barcode_text"
                 CaretBrush="White"
-                TextChanged="barcode_text_TextChanged"
-                Width="200" 
-                     Height="30"/>
+                Width="200"
+                KeyDown="OnKeyDownHandler"
+                Height="30"/>
         </StackPanel>
 
         <TextBlock Name="text" 

@@ -1,5 +1,6 @@
 ﻿using LOTTERIA_Kiosk.DataSource;
 using LOTTERIA_Kiosk.Model;
+using LOTTERIA_Kiosk.Network;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -34,10 +35,25 @@ namespace LOTTERIA_Kiosk
         /// 주문 정보 데이터
         /// </summary>
         public static List<OrderInfo> OrderInfoData = new List<OrderInfo>();
-
+        
         /// <summary>
         /// 현재 사용자 데이터
         /// </summary>
         public static User CurrentUser = new User();
+
+        /// <summary>
+        /// 현재 사용자 데이터
+        /// </summary>
+        public static bool isLogin = true;
+
+        /// <summary>
+        /// TCP/IP 통신
+        /// </summary>
+        public static TCPNet tcpnet = new TCPNet();
+
+        /// <summary>
+        /// 공지사항 데이터
+        /// </summary>
+        public static String Notice = "";
     }
 }

@@ -28,10 +28,15 @@
                            FontSize="18"
                            Foreground="Black" />
             </StackPanel>
-            <TextBlock Text="주문번호"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Bottom"
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+            <TextBlock Text="주문번호 : "
+                       VerticalAlignment="Center"
                        Name="text" />
+                <TextBlock Text="000"
+                           Name="tb_orderNumber"
+                           VerticalAlignment="Center" />
+            </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
                 <TextBlock Text="0" Name="autoMoveValue"/>

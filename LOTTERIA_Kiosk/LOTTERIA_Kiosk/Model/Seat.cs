@@ -18,7 +18,7 @@ namespace LOTTERIA_Kiosk.Model
         /// <summary>
         /// 좌석 번호
         /// </summary>
-        public int Number { get; set; } 
+        public int Number { get; set; }
 
         /// <summary>
         /// 사용 여부
@@ -38,10 +38,5 @@ namespace LOTTERIA_Kiosk.Model
         /// 결제 시간
         /// </summary>
         public DateTime PaymentTime { get; set; }
-
-        /// <summary>
-        /// 메뉴 판매 기록 (관리자 메뉴용)
-        /// </summary>
-        public List<Food> FoodLog { get; set; }
     }
 }

@@ -72,6 +72,7 @@
     <Compile Include="Model\Seat.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Network\Network.cs" />
+    <Compile Include="View\BackgroundConverter.cs" />
     <Compile Include="View\CardPayment.xaml.cs">
       <DependentUpon>CardPayment.xaml</DependentUpon>
     </Compile>
@@ -223,11 +224,11 @@
     <Resource Include="Assets\Icon\circular.png" />
     <Resource Include="Assets\Icon\manager.png" />
     <Resource Include="Assets\Icon\next.png" />
-    <Resource Include="Assets\Icon\pack.png" />
-    <Resource Include="Assets\Icon\store.png" />
     <Resource Include="Assets\loading.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Icon\pack.png" />
+    <Resource Include="Assets\Icon\store.png" />
     <Content Include="Assets\Lotteria_Movie.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -38,9 +38,6 @@ namespace LOTTERIA_Kiosk.Network
                 connectDone.WaitOne();
                 Thread thread = new Thread(Receive);
                 thread.Start();
-
-                
-                
             }
             catch (Exception e)
             {
@@ -111,8 +108,8 @@ namespace LOTTERIA_Kiosk.Network
 
                     receiveDone.Set();
 
-                    int CheckIndex = state.sb.ToString().IndexOf("총매출");
-                    int CheckIndex2 = state.sb.ToString().IndexOf("총 매출");
+                    int CheckIndex = state.sb.ToString().IndexOf("총매출액");
+                    int CheckIndex2 = state.sb.ToString().IndexOf("총 매출액");
 
                     if (CheckIndex != -1 || CheckIndex2 != -1)
                     {

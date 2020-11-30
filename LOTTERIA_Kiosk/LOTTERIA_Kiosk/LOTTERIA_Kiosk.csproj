@@ -75,7 +75,6 @@
     <Compile Include="Model\OrderInfo.cs" />
     <Compile Include="Model\Seat.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="Network\Network.cs" />
     <Compile Include="View\BackgroundConverter.cs" />
     <Compile Include="Network\TCPNet.cs" />
     <Compile Include="Network\RequestMessage.cs" />

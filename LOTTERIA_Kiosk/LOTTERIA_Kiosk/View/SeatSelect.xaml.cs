@@ -39,11 +39,7 @@ namespace LOTTERIA_Kiosk.View
             {
                 MessageBox.Show("사용중인 테이블 입니다.");
                 return;
-               // selectedTable.IsUsed = false;
             }
-            //7
-            //테이블 선택 및 결재 완료 후 테이블 정보 저장해두기(결재완료 시간부터 1분 후 없는 자리로 만들기)
-            /**/
             
             else if (table != 0)
             {
@@ -64,9 +60,11 @@ namespace LOTTERIA_Kiosk.View
 
         public void Before_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/MealPlaceSelect.xaml", UriKind.Relative));
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
             App.SeatData.listSeat[table - 1].IsUsed = false;
-            
         }
 
     public void Next_Click(object sender, RoutedEventArgs e)

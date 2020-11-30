@@ -67,6 +67,7 @@ namespace LOTTERIA_Kiosk.View
                     else
                     {
                     }
+                    barcode_text.Text = "";
                 }
             }
         }

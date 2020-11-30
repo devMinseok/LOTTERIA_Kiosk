@@ -77,7 +77,10 @@ namespace LOTTERIA_Kiosk.Database
                 }
                 catch
                 {
-                    
+                    barcodeList.Add("S000000075");
+                    barcodeList.Add("S000000034");
+                    barcodeList.Add("02345673");
+                    barcodeList.Add("9790260532113");
                 }
 
                 return barcodeList;

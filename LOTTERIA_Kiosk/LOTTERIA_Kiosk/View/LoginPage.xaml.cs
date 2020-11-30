@@ -38,7 +38,7 @@ namespace LOTTERIA_Kiosk.View
                 if (idText == "2101" || idText == "2105" || idText == "2113")
                 {
                     NavigationService.Navigate(new Uri("/View/Home.xaml", UriKind.Relative));
-                    loginClient();
+                    loginClient(idText);
                 }
                 else
                 {
@@ -51,12 +51,12 @@ namespace LOTTERIA_Kiosk.View
             }
         }
 
-        private void loginClient()
+        private void loginClient(string id)
         {
             RequestMessage requestJson = new RequestMessage
             {
                 MSGType = MessageType.로그인,
-                Id = "2113",
+                Id = id,
                 Content = "로그인",
                 ShopName = "",
                 OrderNumber = "",

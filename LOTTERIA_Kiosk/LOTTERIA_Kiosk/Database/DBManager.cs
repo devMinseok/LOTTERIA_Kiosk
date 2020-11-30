@@ -15,27 +15,75 @@ namespace LOTTERIA_Kiosk.Database
         {
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
-                conn.Open();
-                string sql = "SELECT * FROM isAutoLogin";
-
-                //ExecuteReader를 이용하여
-                //연결 모드로 데이타 가져오기
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
+                try
                 {
-                    if ("1".Equals(rdr["isAutoLogin"].ToString()))
+                    conn.Open();
+                    string sql = "SELECT * FROM isAutoLogin";
+
+                    //ExecuteReader를 이용하여
+                    //연결 모드로 데이타 가져오기
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
                     {
-                        return true;
+                        if ("1".Equals(rdr["id"].ToString()))
+                        {
+                            if ("1".Equals(rdr["isAutoLogin"].ToString()))
+                            {
+                                return true;
+                            } else
+                            {
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
-                    else
-                    {
-                        return false;
-                    }
+                    rdr.Close();
+                    conn.Close();
                 }
-                rdr.Close();
+                catch
+                {
+                    return false;
+                }
+                               
                 return false;
             }
         }
+
+        public List<string> getBarcodeList()
+        {
+            List<string> barcodeList = new List<string>();
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+                    string sql = "SELECT * FROM User";
+
+                    //ExecuteReader를 이용하여
+                    //연결 모드로 데이타 가져오기
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        barcodeList.Add(rdr["barcode"].ToString());
+                    }
+                    rdr.Close();
+                    conn.Close();
+                }
+                catch
+                {
+                    
+                }
+
+                return barcodeList;
+            }
+        }
+
+
     }
 }

@@ -32,15 +32,15 @@ namespace LOTTERIA_Kiosk
             InitializeComponent();
 
             this.Loaded += MainWindow_Loaded;
+            App.tcpnet.StartClient();
 
-            //App.tcpnet.StartClient();
-
-            //App.tcpnet.ReceiveThread = new Thread(new ThreadStart(App.tcpnet.Receive));
-            //App.tcpnet.ReceiveThread.Start();
+            App.tcpnet.ReceiveThread = new Thread(new ThreadStart(App.tcpnet.Receive));
+            App.tcpnet.ReceiveThread.Start();
+            loginClient("2113");
 
             DBManager dbManager = new DBManager();
 
-            if (dbManager.isAutoLogin())
+            if (!dbManager.isAutoLogin())
             {
                 frame_content.Source = new Uri("/View/LoginPage.xaml", UriKind.Relative);
             }
@@ -59,6 +59,24 @@ namespace LOTTERIA_Kiosk
 
             splashScreen.Show(false);
         }
+
+        private void loginClient(string id)
+        {
+            RequestMessage requestJson = new RequestMessage
+            {
+                MSGType = MessageType.로그인,
+                Id = id,
+                Content = "로그인",
+                ShopName = "",
+                OrderNumber = "",
+                Group = false,
+                Menus = null
+            };
+
+            string json = JsonConvert.SerializeObject(requestJson);
+            App.tcpnet.Send(json);
+        }
+
 
         private void Timer_tick(object sender, EventArgs e)
         {
@@ -120,7 +138,11 @@ namespace LOTTERIA_Kiosk
             }
 
         }
-        
-        
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            frame_content.Source = new Uri("/View/Home.xaml", UriKind.Relative);
+        }
+
     }
 }

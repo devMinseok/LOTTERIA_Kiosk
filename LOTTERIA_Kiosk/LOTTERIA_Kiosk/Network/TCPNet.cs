@@ -34,7 +34,7 @@ namespace LOTTERIA_Kiosk.Network
         {
             try
             {
-                client.BeginConnect("10.80.163.197", 80, new AsyncCallback(ConnectCallback), client);
+                client.BeginConnect("10.80.162.152", 80, new AsyncCallback(ConnectCallback), client);
                 connectDone.WaitOne();
                 Thread thread = new Thread(Receive);
                 thread.Start();

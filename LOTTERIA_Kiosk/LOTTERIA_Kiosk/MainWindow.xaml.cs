@@ -1,4 +1,5 @@
 ﻿using LOTTERIA_Kiosk.Common;
+using LOTTERIA_Kiosk.Database;
 using LOTTERIA_Kiosk.Network;
 using LOTTERIA_Kiosk.Properties;
 using Newtonsoft.Json;
@@ -34,14 +35,15 @@ namespace LOTTERIA_Kiosk
 
             //App.tcpnet.StartClient();
 
-            //if (!App.isLogin)
-            //{
-            //    frame_content.Source = new Uri("/View/LoginPage.xaml", UriKind.Relative);
-            //}
             //App.tcpnet.ReceiveThread = new Thread(new ThreadStart(App.tcpnet.Receive));
             //App.tcpnet.ReceiveThread.Start();
 
-            DatabaseMana
+            DBManager dbManager = new DBManager();
+
+            if (dbManager.isAutoLogin())
+            {
+                frame_content.Source = new Uri("/View/LoginPage.xaml", UriKind.Relative);
+            }
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -57,24 +59,6 @@ namespace LOTTERIA_Kiosk
 
             splashScreen.Show(false);
         }
-
-        private void loginClient()
-        {
-            RequestMessage requestJson = new RequestMessage
-            {
-                MSGType = MessageType.로그인,
-                Id = "2113",
-                Content = "로그인",
-                ShopName = "",
-                OrderNumber = "",
-                Group = false,
-                Menus = null
-            };
-
-            string json = JsonConvert.SerializeObject(requestJson);
-            App.tcpnet.Send(json);
-        }
-
 
         private void Timer_tick(object sender, EventArgs e)
         {

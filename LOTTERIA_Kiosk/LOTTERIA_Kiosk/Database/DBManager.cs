@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace LOTTERIA_Kiosk.Database
 {
-    public class DatabaseManager
+    class DBManager
     {
-        string connStr = "Server=10.80.161.63;Database=LOTTERIA;Uid=root;Pwd=5754";
+        string connStr = "Server=localhost;Port=3306;Database=LOTTERIA;Uid=root;Pwd=5754";
 
         public bool isAutoLogin()
         {

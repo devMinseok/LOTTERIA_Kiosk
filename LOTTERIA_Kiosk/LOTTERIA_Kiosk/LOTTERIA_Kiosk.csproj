@@ -115,6 +115,7 @@
     </ApplicationDefinition>
     <Compile Include="Common\MenuCategory.cs" />
     <Compile Include="Common\MessageType.cs" />
+    <Compile Include="Database\DBManager.cs" />
     <Compile Include="DataSource\MenuDataSource.cs" />
     <Compile Include="DataSource\SeatDataSource.cs" />
     <Compile Include="Model\Food.cs" />

@@ -71,19 +71,20 @@
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
-            <TextBlock Text="할인적용"
+            <TextBlock Text="할인, 품절 적용"
                        Foreground="Red"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Top"
                        Margin="30 20 0 0"
-                       Width="100"
-                       Height="30"
                        FontSize="24" />
+            
             <TextBlock Text=""
                        Name="tb_menuName" />
+            
             <StackPanel VerticalAlignment="Top"
                         Orientation="Vertical"
                         Margin="0 200 0 0">
+                
                 <Image Name="SelectedImage"
                        Width="250"
                        Source="{Binding ImagePath}" />
@@ -118,10 +119,16 @@
                     <TextBlock Text="%" />
                 </StackPanel>
 
-                <Button Content="적용하기"
-                        Margin="30"
+                <Button Content="할인적용하기"
+                        Margin="30,5,30,5"
                         Name="btn_applyDiscount"
                         Click="btn_applyDiscount_Click"/>
+
+                <Button Content="품절"
+                        Margin="30,5,30,5"
+                        Name="btn_soldOut"
+                        Click="btn_soldOut_Click"/>
+
             </StackPanel>
         </Grid>
     </Grid>

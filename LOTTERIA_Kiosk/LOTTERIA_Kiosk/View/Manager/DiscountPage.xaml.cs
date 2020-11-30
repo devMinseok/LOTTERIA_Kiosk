@@ -80,5 +80,17 @@ namespace LOTTERIA_Kiosk.View.Manager
         {
             selectedFood.DiscountRate = int.Parse(SelectedDiscount.Text);
         }
+
+        private void btn_soldOut_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedFood.IsSoldOut)
+            {
+                selectedFood.IsSoldOut = false;
+            }
+            else
+            {
+                selectedFood.IsSoldOut = true;
+            }
+        }
     }
 }

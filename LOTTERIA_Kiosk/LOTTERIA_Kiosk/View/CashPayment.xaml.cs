@@ -1,4 +1,5 @@
-﻿using LOTTERIA_Kiosk.Model;
+﻿using LOTTERIA_Kiosk.Database;
+using LOTTERIA_Kiosk.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +27,10 @@ namespace LOTTERIA_Kiosk.View
         public CashPayment()
         {
             InitializeComponent();
-            barcodeValList.Add("2112345678900");
-            barcodeValList.Add("02345673");
-            barcodeValList.Add("9790260532113");
+
+            DBManager dbManager = new DBManager();
+            barcodeValList = dbManager.getBarcodeList();
+
             barcode_text.Focus();
             tbTotalPrice.Text = GetTotalPrice().ToString();
         }

@@ -38,7 +38,6 @@ namespace LOTTERIA_Kiosk.View
             StartTimer();
             SendRequest();
             App.SelectedMenuList.Clear();
-            App.FoodData.Load();
         }
         private double GetTotalPrice()
         {

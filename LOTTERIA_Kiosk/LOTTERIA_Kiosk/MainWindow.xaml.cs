@@ -32,14 +32,16 @@ namespace LOTTERIA_Kiosk
 
             this.Loaded += MainWindow_Loaded;
 
-            App.tcpnet.StartClient();
+            //App.tcpnet.StartClient();
 
-            if (!App.isLogin)
-            {
-                frame_content.Source = new Uri("/View/LoginPage.xaml", UriKind.Relative);
-            }
-            App.tcpnet.ReceiveThread = new Thread(new ThreadStart(App.tcpnet.Receive));
-            App.tcpnet.ReceiveThread.Start();
+            //if (!App.isLogin)
+            //{
+            //    frame_content.Source = new Uri("/View/LoginPage.xaml", UriKind.Relative);
+            //}
+            //App.tcpnet.ReceiveThread = new Thread(new ThreadStart(App.tcpnet.Receive));
+            //App.tcpnet.ReceiveThread.Start();
+
+            DatabaseMana
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -54,15 +56,8 @@ namespace LOTTERIA_Kiosk
             SetTimer();
 
             splashScreen.Show(false);
-
-            this.PreviewKeyDown += MainWindow_PreviewKeyDown;
-
-            loginClient();
-            //if (Database().isLogin()) 
-            //{
-
-            //}
         }
+
         private void loginClient()
         {
             RequestMessage requestJson = new RequestMessage
@@ -94,21 +89,6 @@ namespace LOTTERIA_Kiosk
             timer.Tick += Timer_tick;
             timer.Start();
         }
-
-
-        public void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.Key == Key.F2)
-            {
-                if(!frame_content.CanGoBack)
-                {
-                    //Test test = new Test();
-                    //test.Show();
-                    frame_content.Source = new Uri("/View/Manager/Manager.xaml", UriKind.Relative);
-                }
-            }
-        }
-
 
         private void DevButtonClick(object sender, RoutedEventArgs e)
         {

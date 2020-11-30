@@ -53,8 +53,14 @@ namespace LOTTERIA_Kiosk.View
         private void lbMenus_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Food food = lbMenus.SelectedItem as Food;
-            
-            if (food != null) {
+
+            if (food != null)
+            {
+                if (food.IsSoldOut == true)
+                {
+                    MessageBox.Show("품절된 메뉴입니다.", "롯데리아");
+                    return;
+                }
                 AddSelectedMenu(food);
                 lbMenus.SelectedIndex = -1;
             }
@@ -99,7 +105,6 @@ namespace LOTTERIA_Kiosk.View
                 Food selectedFood = new Food();
                 selectedFood.Name = food.Name;
                 selectedFood.ImagePath = food.ImagePath;
-                Console.WriteLine(food.Price);
                 selectedFood.Price = food.Price;
                 selectedFood.Category = food.Category;
                 selectedFood.Count = food.Count;

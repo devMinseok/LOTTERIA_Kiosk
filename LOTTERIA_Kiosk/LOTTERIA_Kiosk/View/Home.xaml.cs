@@ -37,8 +37,19 @@ namespace LOTTERIA_Kiosk.View
             //tcpnet.StartClient();
             //loginClient();
 
+            this.PreviewKeyDown += MainWindow_PreviewKeyDown;
+
             App.tcpnet.Receive();
         }
+
+        public void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F2)
+            {
+                NavigationService.Navigate(new Uri("/View/Manager/Manager.xaml", UriKind.Relative));
+            }
+        }
+
         private void startMedia_MediaEnded(object sender, RoutedEventArgs e)
         {
 

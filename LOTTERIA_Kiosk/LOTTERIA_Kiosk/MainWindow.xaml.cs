@@ -1,4 +1,5 @@
 ﻿using LOTTERIA_Kiosk.Common;
+using LOTTERIA_Kiosk.Database;
 using LOTTERIA_Kiosk.Network;
 using LOTTERIA_Kiosk.Properties;
 using Newtonsoft.Json;
@@ -31,15 +32,18 @@ namespace LOTTERIA_Kiosk
             InitializeComponent();
 
             this.Loaded += MainWindow_Loaded;
-
             App.tcpnet.StartClient();
 
-            if (!App.isLogin)
+            App.tcpnet.ReceiveThread = new Thread(new ThreadStart(App.tcpnet.Receive));
+            App.tcpnet.ReceiveThread.Start();
+            loginClient("2113");
+
+            DBManager dbManager = new DBManager();
+
+            if (!dbManager.isAutoLogin())
             {
                 frame_content.Source = new Uri("/View/LoginPage.xaml", UriKind.Relative);
             }
-            App.tcpnet.ReceiveThread = new Thread(new ThreadStart(App.tcpnet.Receive));
-            App.tcpnet.ReceiveThread.Start();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -54,21 +58,14 @@ namespace LOTTERIA_Kiosk
             SetTimer();
 
             splashScreen.Show(false);
-
-            this.PreviewKeyDown += MainWindow_PreviewKeyDown;
-
-            loginClient();
-            //if (Database().isLogin()) 
-            //{
-
-            //}
         }
-        private void loginClient()
+
+        private void loginClient(string id)
         {
             RequestMessage requestJson = new RequestMessage
             {
                 MSGType = MessageType.로그인,
-                Id = "2113",
+                Id = id,
                 Content = "로그인",
                 ShopName = "",
                 OrderNumber = "",
@@ -94,21 +91,6 @@ namespace LOTTERIA_Kiosk
             timer.Tick += Timer_tick;
             timer.Start();
         }
-
-
-        public void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.Key == Key.F2)
-            {
-                if(!frame_content.CanGoBack)
-                {
-                    //Test test = new Test();
-                    //test.Show();
-                    frame_content.Source = new Uri("/View/Manager/Manager.xaml", UriKind.Relative);
-                }
-            }
-        }
-
 
         private void DevButtonClick(object sender, RoutedEventArgs e)
         {
@@ -156,7 +138,11 @@ namespace LOTTERIA_Kiosk
             }
 
         }
-        
-        
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            frame_content.Source = new Uri("/View/Home.xaml", UriKind.Relative);
+        }
+
     }
 }

@@ -38,9 +38,6 @@ namespace LOTTERIA_Kiosk.View
                 if (idText == "2101" || idText == "2105" || idText == "2113")
                 {
                     NavigationService.Navigate(new Uri("/View/Home.xaml", UriKind.Relative));
-                    //loginClient();
-
-                    App.isLogin = true;
                 }
                 else
                 {
